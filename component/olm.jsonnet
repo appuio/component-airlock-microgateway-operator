@@ -120,7 +120,8 @@ local manual_approval_upgradehook = {
   },
   spec: {
     selector: params.olm.upgrade_strategy.upgrade_job_selector,
-    events: [ 'Create' ],
+    // Run the hook when the actual maintenance window starts
+    events: [ 'Start' ],
     template: {
       spec: {
         template: {
