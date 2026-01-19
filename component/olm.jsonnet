@@ -130,7 +130,7 @@ local manual_approval_upgradehook = {
             serviceAccountName: manual_approval_serviceaccount.metadata.name,
             containers: [
               kube.Container('approve') {
-                image: '$(registry)s/$(image)s:$(tag)s' % params.images.oc,
+                image: '%(registry)s/%(image)s:%(tag)s' % params.images.oc,
                 command: [ '/usr/local/bin/approve' ],
                 env_: {
                   AIRLOCK_NAMESPACE: params.namespace,
