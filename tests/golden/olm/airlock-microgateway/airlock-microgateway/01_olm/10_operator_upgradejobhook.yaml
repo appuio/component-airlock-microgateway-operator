@@ -69,7 +69,7 @@ spec:
               env:
                 - name: AIRLOCK_NAMESPACE
                   value: syn-airlock-microgateway
-              image: $(registry)s/$(image)s:$(tag)s
+              image: quay.io/appuio/oc:v4.19
               imagePullPolicy: IfNotPresent
               name: approve
               ports: []
