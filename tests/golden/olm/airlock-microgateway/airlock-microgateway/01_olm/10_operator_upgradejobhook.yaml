@@ -54,7 +54,7 @@ metadata:
   namespace: appuio-openshift-upgrade-controller
 spec:
   events:
-    - Create
+    - Start
   selector:
     matchLabels:
       appuio-managed-upgrade: 'true'
