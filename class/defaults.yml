@@ -85,4 +85,4 @@ parameters:
       oc:
         registry: quay.io
         image: appuio/oc
-        tag: v4.19
+        tag: v4.20
