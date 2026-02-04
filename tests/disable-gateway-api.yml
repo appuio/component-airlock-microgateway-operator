@@ -10,6 +10,6 @@ parameters:
         source: https://raw.githubusercontent.com/appuio/component-openshift4-monitoring/v7.4.1/lib/openshift4-monitoring-alert-patching.libsonnet
         output_path: vendor/lib/alert-patching.libsonnet
 
-  airlock_microgateway:
+  airlock_microgateway_operator:
     gateway_api:
       enabled: false

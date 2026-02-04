@@ -18,7 +18,7 @@ spec:
           labels:
             severity: warning
             syn: 'true'
-            syn_component: airlock-microgateway
+            syn_component: airlock-microgateway-operator
         - alert: AirlockMicrogatewayLicenseExpiresVerySoon
           annotations:
             description: The Airlock Microgateway license expires in {{ $value|humanizeDuration
@@ -28,4 +28,4 @@ spec:
           labels:
             severity: critical
             syn: 'true'
-            syn_component: airlock-microgateway
+            syn_component: airlock-microgateway-operator

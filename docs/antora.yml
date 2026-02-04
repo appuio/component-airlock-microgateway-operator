@@ -1,5 +1,5 @@
-name: airlock-microgateway
-title: airlock-microgateway
+name: airlock-microgateway-operator
+title: airlock-microgateway-operator
 version: master
 start_page: ROOT:index.adoc
 nav:

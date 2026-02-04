@@ -3,7 +3,7 @@ local com = import 'lib/commodore.libjsonnet';
 local kap = import 'lib/kapitan.libjsonnet';
 
 local inv = kap.inventory();
-local params = inv.parameters.airlock_microgateway;
+local params = inv.parameters.airlock_microgateway_operator;
 
 local gateway_group = 'gateway.networking.k8s.io';
 local xopenshift_group = 'x-openshift.microgateway.airlock.com';

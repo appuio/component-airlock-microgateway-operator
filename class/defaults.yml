@@ -1,5 +1,5 @@
 parameters:
-  airlock_microgateway:
+  airlock_microgateway_operator:
     =_metadata:
       multi_tenant: true
     namespace: syn-airlock-microgateway
@@ -22,7 +22,7 @@ parameters:
     httproute_certificate_manager:
       enabled: false
       create_certificate_annotation: airlock-microgateway.appuio.io/create-certificate
-      tls_secret_name_annotation: ${airlock_microgateway:gateway_listener_manager:tls_secret_name_annotation}
+      tls_secret_name_annotation: ${airlock_microgateway_operator:gateway_listener_manager:tls_secret_name_annotation}
       gateway_default_cluster_issuer_annotation: airlock-microgateway.appuio.io/httproute-default-cluster-issuer
       cluster_issuer_annotation: airlock-microgateway.appuio.io/cluster-issuer
       issuer_annotation: airlock-microgateway.appuio.io/issuer
@@ -33,7 +33,7 @@ parameters:
       # Kubernetes Gateway API version
       version: "v1.2.1"
       # Upstream Kubernetes Gateway API source
-      source: https://github.com/kubernetes-sigs/gateway-api/releases/download/${airlock_microgateway:gateway_api:version}/standard-install.yaml
+      source: https://github.com/kubernetes-sigs/gateway-api/releases/download/${airlock_microgateway_operator:gateway_api:version}/standard-install.yaml
 
     airlock_xopenshift:
       enabled: false
@@ -68,7 +68,7 @@ parameters:
 
     olm:
       version: "stable"
-      channel: "${airlock_microgateway:olm:version}"
+      channel: "${airlock_microgateway_operator:olm:version}"
       upgrade_strategy:
         manual_upgrade: false
         upgrade_job_hook: true

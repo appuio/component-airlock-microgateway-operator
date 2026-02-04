@@ -4,7 +4,7 @@ local operatorlib = import 'lib/openshift4-operators.libsonnet';
 
 // The hiera parameters for the component
 local inv = kap.inventory();
-local params = inv.parameters.airlock_microgateway;
+local params = inv.parameters.airlock_microgateway_operator;
 
 local airlock_xopenshift = import 'airlock-xopenshift.jsonnet';
 

@@ -1,13 +1,13 @@
-# Commodore Component: airlock-microgateway
+# Commodore Component: airlock-microgateway-operator
 
-This is a [Commodore][commodore] Component for airlock-microgateway.
+This is a [Commodore][commodore] Component for the Airlock Microgateway operator.
 
 This repository is part of Project Syn.
 For documentation on Project Syn and this component, see [syn.tools](https://syn.tools).
 
 ## Documentation
 
-The rendered documentation for this component is available on the [Commodore Components Hub](https://hub.syn.tools/airlock-microgateway).
+The rendered documentation for this component is available on the [Commodore Components Hub](https://hub.syn.tools/airlock-microgateway-operator).
 
 Documentation for this component is written using [Asciidoc][asciidoc] and [Antora][antora].
 It can be found in the [`docs`](docs) folder.

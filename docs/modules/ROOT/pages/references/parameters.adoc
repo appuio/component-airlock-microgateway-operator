@@ -1,6 +1,6 @@
 = Parameters
 
-The parent key for all of the following parameters is `airlock_microgateway`.
+The parent key for all of the following parameters is `airlock_microgateway_operator`.
 
 == `namespace`
 
@@ -325,7 +325,7 @@ TIP: When component `cilium` is installed in the cluster, the component also cre
 
 [source,yaml]
 ----
-airlock_microgateway:
+airlock_microgateway_operator:
   gateways:
     airlock/gateway-1:
       spec:
@@ -529,7 +529,7 @@ The source URL for the Microgateway chart.
 [source,yaml]
 ----
 parameters:
-  airlock_microgateway:
+  airlock_microgateway_operator:
     namespace: syn-airlock-microgateway
 
     install_method: helm
