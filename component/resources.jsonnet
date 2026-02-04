@@ -2,36 +2,13 @@
 local kube = import 'kube-ssa-compat.libsonnet';
 local com = import 'lib/commodore.libjsonnet';
 local kap = import 'lib/kapitan.libjsonnet';
-local inv = kap.inventory();
 
-// The hiera parameters for the component
+local lib = import 'lib/airlock-microgateway-operator.libsonnet';
+
+local inv = kap.inventory();
 local params = inv.parameters.airlock_microgateway_operator;
 
 local has_cilium = std.member(inv.applications, 'cilium');
-
-local GatewayParameters = function(name='') {
-  apiVersion: 'microgateway.airlock.com/v1alpha1',
-  kind: 'GatewayParameters',
-  metadata: {
-    name: name,
-  },
-};
-
-local GatewayClass = function(name='') {
-  apiVersion: 'gateway.networking.k8s.io/v1',
-  kind: 'GatewayClass',
-  metadata: {
-    name: name,
-  },
-};
-
-local Gateway = function(name='') {
-  apiVersion: 'gateway.networking.k8s.io/v1',
-  kind: 'Gateway',
-  metadata: {
-    name: name,
-  },
-};
 
 local CiliumNetworkPolicy(name) = {
   apiVersion: 'cilium.io/v2',
@@ -109,11 +86,11 @@ local gateway_cnps = [
 
 {
   [if std.length(params.gateway_classes) > 0 then '01_gateway_classes']:
-    com.generateResources(referencedParam(params.gateway_classes), GatewayClass),
+    com.generateResources(referencedParam(params.gateway_classes), lib.GatewayClass),
   [if std.length(params.gateway_parameters) > 0 then '01_gateway_parameters']:
-    com.generateResources(namespaced(params.gateway_parameters), GatewayParameters),
+    com.generateResources(namespaced(params.gateway_parameters), lib.GatewayParameters),
   [if std.length(params.gateways) > 0 then '01_gateways']:
-    com.generateResources(namespaced(params.gateways), Gateway),
+    com.generateResources(namespaced(params.gateways), lib.Gateway),
   [if std.length(params.gateways) > 0 && has_cilium then '01_gateway_networkpolicies']:
     gateway_cnps,
 }
