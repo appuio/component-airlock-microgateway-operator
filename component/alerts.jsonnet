@@ -3,7 +3,7 @@ local kap = import 'lib/kapitan.libjsonnet';
 local prom = import 'lib/prom.libsonnet';
 
 local inv = kap.inventory();
-local params = inv.parameters.airlock_microgateway;
+local params = inv.parameters.airlock_microgateway_operator;
 
 local operator_rules = prom.PrometheusRule('operator-rules') {
   metadata+: {

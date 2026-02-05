@@ -26,7 +26,7 @@ parameters:
   openshift_upgrade_controller:
     namespace: appuio-openshift-upgrade-controller
 
-  airlock_microgateway:
+  airlock_microgateway_operator:
     install_method: olm
     olm:
       upgrade_strategy:

@@ -5,10 +5,10 @@ parameters:
     olm:
       dependencies:
         - type: https
-          source: ${airlock_microgateway:gateway_api:source}
+          source: ${airlock_microgateway_operator:gateway_api:source}
           output_path: ${_base_directory}/manifests/gateway-api/standard-install.yaml
         - type: https
-          source: https://github.com/kubernetes-sigs/gateway-api/releases/download/${airlock_microgateway:airlock_xopenshift:version}/${airlock_microgateway:airlock_xopenshift:channel}-install.yaml
+          source: https://github.com/kubernetes-sigs/gateway-api/releases/download/${airlock_microgateway_operator:airlock_xopenshift:version}/${airlock_microgateway_operator:airlock_xopenshift:channel}-install.yaml
           output_path: ${_base_directory}/manifests/airlock-xopenshift/upstream.yaml
       compile:
         - input_paths:
@@ -19,37 +19,37 @@ parameters:
         - input_paths:
             - ${_base_directory}/component/namespace.jsonnet
           input_type: jsonnet
-          output_path: airlock-microgateway/00_prerequisites/
+          output_path: airlock-microgateway-operator/00_prerequisites/
 
         - input_paths:
             - ${_base_directory}/component/olm.jsonnet
           input_type: jsonnet
-          output_path: airlock-microgateway/01_olm/
+          output_path: airlock-microgateway-operator/01_olm/
         - input_paths:
             - ${_base_directory}/component/main.jsonnet
             - ${_base_directory}/component/airlock-gateway-api.jsonnet
             - ${_base_directory}/component/airlock-xopenshift.jsonnet
           input_type: jsonnet
-          output_path: airlock-microgateway/00_prerequisites/
+          output_path: airlock-microgateway-operator/00_prerequisites/
         - input_paths:
             - ${_base_directory}/component/resources.jsonnet
           input_type: jsonnet
-          output_path: airlock-microgateway/02_resources/
+          output_path: airlock-microgateway-operator/02_resources/
         - input_paths:
             - ${_base_directory}/component/alerts.jsonnet
           input_type: jsonnet
-          output_path: airlock-microgateway/10_alerts/
+          output_path: airlock-microgateway-operator/10_alerts/
 
     helm:
       dependencies:
         - type: https
-          source: ${airlock_microgateway:gateway_api:source}
+          source: ${airlock_microgateway_operator:gateway_api:source}
           output_path: ${_base_directory}/manifests/gateway-api/standard-install.yaml
         - type: helm
           chart_name: ${_helm_chart_name}
-          version: ${airlock_microgateway:charts:${_helm_chart_name}:version}
-          source: ${airlock_microgateway:charts:${_helm_chart_name}:source}
-          output_path: ${_base_directory}/helmcharts/airlock-microgateway/${airlock_microgateway:charts:${_helm_chart_name}:version}/
+          version: ${airlock_microgateway_operator:charts:${_helm_chart_name}:version}
+          source: ${airlock_microgateway_operator:charts:${_helm_chart_name}:source}
+          output_path: ${_base_directory}/helmcharts/airlock-microgateway/${airlock_microgateway_operator:charts:${_helm_chart_name}:version}/
 
       compile:
         - input_paths:
@@ -59,29 +59,29 @@ parameters:
         - input_paths:
             - ${_base_directory}/component/namespace.jsonnet
           input_type: jsonnet
-          output_path: airlock-microgateway/00_prerequisites/
-        - output_path: airlock-microgateway/01_airlock-microgateway_helmchart/
+          output_path: airlock-microgateway-operator/00_prerequisites/
+        - output_path: airlock-microgateway-operator/01_airlock-microgateway_helmchart/
           input_type: helm
           input_paths:
-            - ${_base_directory}/helmcharts/airlock-microgateway/${airlock_microgateway:charts:${_helm_chart_name}:version}/
+            - ${_base_directory}/helmcharts/airlock-microgateway/${airlock_microgateway_operator:charts:${_helm_chart_name}:version}/
           helm_params:
             name: ${_release_name}
-            namespace: ${airlock_microgateway:namespace}
-          helm_values: ${airlock_microgateway:helm_values}
+            namespace: ${airlock_microgateway_operator:namespace}
+          helm_values: ${airlock_microgateway_operator:helm_values}
         - input_paths:
             - ${_base_directory}/component/main.jsonnet
             - ${_base_directory}/component/airlock-gateway-api.jsonnet
           input_type: jsonnet
-          output_path: airlock-microgateway/00_prerequisites/
+          output_path: airlock-microgateway-operator/00_prerequisites/
         - input_paths:
             - ${_base_directory}/component/resources.jsonnet
           input_type: jsonnet
-          output_path: airlock-microgateway/02_resources/
+          output_path: airlock-microgateway-operator/02_resources/
         - input_paths:
             - ${_base_directory}/component/alerts.jsonnet
           input_type: jsonnet
-          output_path: airlock-microgateway/10_alerts/
+          output_path: airlock-microgateway-operator/10_alerts/
 
 
   kapitan:
-    ${_kapitan:${airlock_microgateway:install_method}}
+    ${_kapitan:${airlock_microgateway_operator:install_method}}

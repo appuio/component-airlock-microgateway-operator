@@ -3,7 +3,7 @@ local esp = import 'lib/espejote.libsonnet';
 local kap = import 'lib/kapitan.libjsonnet';
 
 local inv = kap.inventory();
-local params = inv.parameters.airlock_microgateway;
+local params = inv.parameters.airlock_microgateway_operator;
 
 local namespace = params.namespace;
 

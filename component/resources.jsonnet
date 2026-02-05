@@ -5,7 +5,7 @@ local kap = import 'lib/kapitan.libjsonnet';
 local inv = kap.inventory();
 
 // The hiera parameters for the component
-local params = inv.parameters.airlock_microgateway;
+local params = inv.parameters.airlock_microgateway_operator;
 
 local has_cilium = std.member(inv.applications, 'cilium');
 

@@ -4,9 +4,9 @@
   "checkout": "main",
   "context": {
     "cookiecutter": {
-      "name": "airlock-microgateway",
-      "slug": "airlock-microgateway",
-      "parameter_key": "airlock_microgateway",
+      "name": "airlock-microgateway-operator",
+      "slug": "airlock-microgateway-operator",
+      "parameter_key": "airlock_microgateway_operator",
       "test_cases": "defaults disable-gateway-api olm resources",
       "add_lib": "n",
       "add_pp": "n",
@@ -22,8 +22,8 @@
       "copyright_holder": "VSHN AG <info@vshn.ch>",
       "copyright_year": "2025",
       "github_owner": "appuio",
-      "github_name": "component-airlock-microgateway",
-      "github_url": "https://github.com/appuio/component-airlock-microgateway",
+      "github_name": "component-airlock-microgateway-operator",
+      "github_url": "https://github.com/appuio/component-airlock-microgateway-operator",
       "_template": "https://github.com/projectsyn/commodore-component-template.git",
       "_commit": "8f2273cd8ab13c55eb0f6dd621c70c4c9e4786fd"
     }

@@ -5,7 +5,7 @@ on:
       - master
 
 env:
-  COMPONENT_NAME: airlock-microgateway
+  COMPONENT_NAME: airlock-microgateway-operator
 
 jobs:
   linting:
