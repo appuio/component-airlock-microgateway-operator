@@ -5,8 +5,10 @@ local kap = import 'lib/kapitan.libjsonnet';
 local inv = kap.inventory();
 local params = inv.parameters.airlock_microgateway_operator;
 
-local gateway_group = 'gateway.networking.k8s.io';
-local xopenshift_group = 'x-openshift.microgateway.airlock.com';
+local lib = import 'lib/airlock-microgateway-operator.libsonnet';
+
+local gateway_group = lib.gatewayApiGroup;
+local xopenshift_group = lib.xopenshiftApiGroup;
 
 local crds =
   local manifests_dir = '%s/manifests/airlock-xopenshift' % inv.parameters._base_directory;
