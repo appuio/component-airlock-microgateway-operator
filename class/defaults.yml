@@ -26,6 +26,7 @@ parameters:
       gateway_default_cluster_issuer_annotation: airlock-microgateway.appuio.io/httproute-default-cluster-issuer
       cluster_issuer_annotation: airlock-microgateway.appuio.io/cluster-issuer
       issuer_annotation: airlock-microgateway.appuio.io/issuer
+      base_certificate_spec: {}
 
     gateway_api:
       # Installs upstream Kubernetes Gateway API if true

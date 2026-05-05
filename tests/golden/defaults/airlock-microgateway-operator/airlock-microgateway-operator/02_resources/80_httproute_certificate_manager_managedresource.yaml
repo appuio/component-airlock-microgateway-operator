@@ -9,6 +9,11 @@ spec:
   data:
     config.json: |-
       {
+          "baseCertificateSpec": {
+              "privateKey": {
+                  "size": 4096
+              }
+          },
           "clusterIssuerAnnotation": "airlock-microgateway.appuio.io/cluster-issuer",
           "createCertificateAnnotation": "airlock-microgateway.appuio.io/create-certificate",
           "gatewayDefaultClusterIssuerAnnotation": "airlock-microgateway.appuio.io/httproute-default-cluster-issuer",
@@ -53,6 +58,7 @@ spec:
     local issuerAnnotation = config.issuerAnnotation;
     local tlsSecretNameAnnotation = config.tlsSecretNameAnnotation;
     local gatewayDefaultClusterIssuerAnnotation = config.gatewayDefaultClusterIssuerAnnotation;
+    local baseCertificateSpec = config.baseCertificateSpec;
 
     local gateways = esp.context().gateways;
 
@@ -183,7 +189,7 @@ spec:
                 },
               ],
             },
-            spec: {
+            spec: baseCertificateSpec {
               dnsNames: route.spec.hostnames,
               issuerRef: issuer,
               secretName: secretName,

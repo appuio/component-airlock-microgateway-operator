@@ -153,6 +153,21 @@ default:: `airlock-microgateway.appuio.io/issuer`
 
 The annotation to use on `HTTPRoute` resources to specify the issuer for certificates.
 
+=== `base_certificate_spec`
+
+[horizontal]
+type:: object
+default:: `{}`
+
+The value of this parameter is used as the base value for field `spec` of `Certificate` resources created by the HTTPRoute Certificate Manager.
+See the https://cert-manager.io/docs/usage/certificate/#creating-certificate-resources[cert-manager documentation] for supported fields.
+
+[NOTE]
+====
+The HTTPRoute Certificate Manager unconditionally sets fields `spec.dnsNames`, `spec.issuerRef`, and `spec.secretName` based on `HTTPRoute` or `Gateway` annotations.
+Additionally the HTTPRoute Certificate Manager unconditionally sets field `spec.usages` to `['digital signature', 'key encipherment']`.
+====
+
 == `gateway_api`
 
 [horizontal]

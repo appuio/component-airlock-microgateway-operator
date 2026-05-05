@@ -7,6 +7,7 @@ local clusterIssuerAnnotation = config.clusterIssuerAnnotation;
 local issuerAnnotation = config.issuerAnnotation;
 local tlsSecretNameAnnotation = config.tlsSecretNameAnnotation;
 local gatewayDefaultClusterIssuerAnnotation = config.gatewayDefaultClusterIssuerAnnotation;
+local baseCertificateSpec = config.baseCertificateSpec;
 
 local gateways = esp.context().gateways;
 
@@ -137,7 +138,7 @@ local certForHTTRoute(route) =
             },
           ],
         },
-        spec: {
+        spec: baseCertificateSpec {
           dnsNames: route.spec.hostnames,
           issuerRef: issuer,
           secretName: secretName,
