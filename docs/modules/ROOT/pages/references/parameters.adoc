@@ -373,6 +373,34 @@ default:: `{}`
 Users can customize alerts through this parameter.
 The component looks for alert names it knows in this parameter, and applies the provided value, if any, over the default alert configuration.
 
+== `resources`
+
+[horizontal]
+type:: object
+default::
++
+[source,yaml]
+----
+resources:
+  operator: {}
+  engine: {}
+  networkValidator: {}
+----
+example::
++
+[source,yaml]
+----
+resources:
+  operator:
+    requests:
+      cpu: 250m
+      memory: 512Mi
+    limits:
+      memory: 512Mi
+----
+
+Configure resources for the operator.
+
 == `helm_values`
 
 [horizontal]
