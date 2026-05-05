@@ -93,6 +93,16 @@ default:: `airlock-microgateway.appuio.io/tls-secret-name`
 
 The annotation to use on `HTTPRoute` resources to specify the name of the TLS secret to use for HTTPS listeners.
 
+== `certificate_per_hostname_annotation`
+
+[horizontal]
+type:: string
+default:: `airlock-microgateway.appuio.io/certificate-per-hostname`
+
+The annotation to use on `HTTPRoute` resources to indicate that the HTTPS listeners for each host name in `spec.hostnames` should be configured with certificates stored in secrets named `<SECRET NAME>-<N>`, where N is the zero-based index of each listener's hostname in `spec.hostnames`.
+The value `<SECRET NAME>` is read from the annotation key configured in parameter `gateway_listener_manager.tls_secret_name_annotation`.
+Must be set to `ANNOTATION: "true"` in the resource annotations.
+
 == `httproute_certificate_manager`
 
 [horizontal]
@@ -118,6 +128,33 @@ type:: string
 default:: `${airlock_microgateway:gateway_listener_manager:tls_secret_name_annotation}`
 
 The annotation to use on `HTTPRoute` resources to specify the name of the TLS secret to create the certificate in.
+
+== `certificate_per_hostname_annotation`
+
+[horizontal]
+type:: string
+default:: `${airlock_microgateway_operator:gateway_listener_manager:certificate_per_hostname_annotation}`
+
+The annotation to use on `HTTPRoute` resources to indicate that the HTTPRoute Certificate Manager should create a separate `Certificate` resource for each hostname in `spec.hostnames`.
+Must be set to `ANNOTATION: "true"` in the resource annotations.
+
+If enabled, the HTTPRoute Certificate Manager will create `Certificate` resources named `<ROUTE NAME>-cert-<N>`, where N is the zero-based index of the certificate's hostname in the HTTPRoute's `spec.hostnames`.
+In this mode, each `Certificate` resource is configured with a secret name of the form `<SECRET NAME>-<N>` where N matches the `<N>` in the `Certificate` resource name, and the value `<SECRET NAME>` is read from the annotation key configured in parameter `httproute_certificate_manager.tls_secret_name_annotation`.
+
+[IMPORTANT]
+====
+The feature ensures that there are distinct `Certificate` resource names depending on whether per-hostname certificate creation is enabled or disabled.
+The HTTPRoute Certificate Manager doesn't delete the `Certificate` resource(s) associated with the previous mode when a HTTPRoute is annotated to enable or disable per-hostname certificates.
+
+We strongly recommend that users manually delete any `Certificate`resources associated with the previous mode when changing a HTTPRoute's configuration to enable or disable per-hostname certificates.
+Otherwise, cert-manager will continue to renew those certificates on their regular schedules.
+====
+
+[TIP]
+====
+The per-hostname certificate creation should be able to handle arbitrary changes to `spec.hostnames` of an existing HTTPRoute gracefully.
+However, such changes may cause certificates to be re-issued.
+====
 
 === `create_certificate_annotation`
 

@@ -60,6 +60,7 @@ local jsonnetlib =
         'config.json': std.manifestJson({
           createListenerAnnotation: params.gateway_listener_manager.create_listener_annotation,
           tlsSecretNameAnnotation: params.gateway_listener_manager.tls_secret_name_annotation,
+          certificatePerHostnameAnnotation: params.gateway_listener_manager.certificate_per_hostname_annotation,
         }),
       },
     },

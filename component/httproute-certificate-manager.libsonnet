@@ -54,6 +54,7 @@ local jsonnetlib =
       data: {
         'config.json': std.manifestJson({
           tlsSecretNameAnnotation: params.httproute_certificate_manager.tls_secret_name_annotation,
+          certificatePerHostnameAnnotation: params.httproute_certificate_manager.certificate_per_hostname_annotation,
           clusterIssuerAnnotation: params.httproute_certificate_manager.cluster_issuer_annotation,
           issuerAnnotation: params.httproute_certificate_manager.issuer_annotation,
           gatewayDefaultClusterIssuerAnnotation: params.httproute_certificate_manager.gateway_default_cluster_issuer_annotation,

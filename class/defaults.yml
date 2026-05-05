@@ -18,11 +18,14 @@ parameters:
       enabled: false
       create_listener_annotation: airlock-microgateway.appuio.io/create-gateway-https-listener
       tls_secret_name_annotation: airlock-microgateway.appuio.io/tls-secret-name
+      certificate_per_hostname_annotation: airlock-microgateway.appuio.io/certificate-per-hostname
+
 
     httproute_certificate_manager:
       enabled: false
       create_certificate_annotation: airlock-microgateway.appuio.io/create-certificate
       tls_secret_name_annotation: ${airlock_microgateway_operator:gateway_listener_manager:tls_secret_name_annotation}
+      certificate_per_hostname_annotation: ${airlock_microgateway_operator:gateway_listener_manager:certificate_per_hostname_annotation}
       gateway_default_cluster_issuer_annotation: airlock-microgateway.appuio.io/httproute-default-cluster-issuer
       cluster_issuer_annotation: airlock-microgateway.appuio.io/cluster-issuer
       issuer_annotation: airlock-microgateway.appuio.io/issuer
