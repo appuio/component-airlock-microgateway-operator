@@ -48,6 +48,7 @@ local operator_subscription = operatorlib.namespacedSubscription(
         for crd in std.objectFields(airlock_xopenshift.enabled_crds)
       ] else [
       ],
+      [if std.length(params.resources.operator) > 0 then 'resources']: params.resources.operator,
     },
   },
 };

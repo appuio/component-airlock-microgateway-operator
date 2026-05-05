@@ -28,6 +28,13 @@ parameters:
 
   airlock_microgateway_operator:
     install_method: olm
+    resources:
+      operator:
+        requests:
+          cpu: 250m
+          memory: 512Mi
+        limits:
+          memory: 1024Mi
     olm:
       upgrade_strategy:
         manual_upgrade: true

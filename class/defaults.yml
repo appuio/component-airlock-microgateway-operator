@@ -50,6 +50,19 @@ parameters:
       ignoreNames: []
       patches: {}
 
+    # For the olm version, the default values are
+    #   resources:
+    #     limits:
+    #       cpu: 2500m
+    #       memory: 512Mi
+    #     requests:
+    #       cpu: 250m
+    #       memory: 512Mi
+    resources:
+      operator: {}
+      engine: {}
+      networkValidator: {}
+
     # See Airlock docs: https://docs.airlock.com/microgateway/4.5/index/1726159368039.html
     helm_values:
       operator:
@@ -63,6 +76,11 @@ parameters:
           create: true
           labels:
             release: "kube-prometheus-stack"
+        resources: ${airlock_microgateway_operator:resources:operator}
+      engine:
+        resources: ${airlock_microgateway_operator:resources:engine}
+      networkValidator:
+        resources: ${airlock_microgateway_operator:resources:networkValidator}
       dashboards:
         create: true
 
