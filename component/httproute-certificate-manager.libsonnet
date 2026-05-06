@@ -58,6 +58,7 @@ local jsonnetlib =
           issuerAnnotation: params.httproute_certificate_manager.issuer_annotation,
           gatewayDefaultClusterIssuerAnnotation: params.httproute_certificate_manager.gateway_default_cluster_issuer_annotation,
           createCertificateAnnotation: params.httproute_certificate_manager.create_certificate_annotation,
+          baseCertificateSpec: params.httproute_certificate_manager.base_certificate_spec,
         }),
       },
     },

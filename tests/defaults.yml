@@ -22,3 +22,6 @@ parameters:
 
     httproute_certificate_manager:
       enabled: true
+      base_certificate_spec:
+        privateKey:
+          size: 4096
