@@ -3,6 +3,7 @@ local config = import 'gateway-listener-manager/config.json';
 
 local createListenerAnnotation = config.createListenerAnnotation;
 local tlsSecretNameAnnotation = config.tlsSecretNameAnnotation;
+local certificatePerHostnameAnnotation = config.certificatePerHostnameAnnotation;
 
 local finalizer = 'airlock-microgateway.appuio.io/gateway-listener-manager';
 local parentRefTrackAnnotation = 'internal.gateway-listener-manager.airlock-microgateway.appuio.io/track-parent-refs';
@@ -24,6 +25,11 @@ local wantsHttpsListener(obj) =
   &&
   secretName(obj) != ''
 ;
+
+local wantsCertificatePerHostname(obj) =
+  std.get(
+    std.get(obj.metadata, 'annotations', {}), certificatePerHostnameAnnotation, 'false'
+  ) == 'true';
 
 local routeHostnameRefs(route) =
   std.mapWithIndex(
@@ -103,7 +109,11 @@ local ensureListenerAndFinalizer(obj) =
                   {
                     group: '',
                     kind: 'Secret',
-                    name: secretName(obj),
+                    name:
+                      if wantsCertificatePerHostname(obj) then
+                        '%s-%d' % [ secretName(obj), h.pos ]
+                      else
+                        secretName(obj),
                     namespace: obj.metadata.namespace,
                   },
                 ],

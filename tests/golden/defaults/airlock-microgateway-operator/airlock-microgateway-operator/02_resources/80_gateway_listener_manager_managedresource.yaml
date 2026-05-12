@@ -9,6 +9,7 @@ spec:
   data:
     config.json: |-
       {
+          "certificatePerHostnameAnnotation": "airlock-microgateway.appuio.io/certificate-per-hostname",
           "createListenerAnnotation": "airlock-microgateway.appuio.io/create-gateway-https-listener",
           "tlsSecretNameAnnotation": "airlock-microgateway.appuio.io/tls-secret-name"
       }
@@ -40,6 +41,7 @@ spec:
 
     local createListenerAnnotation = config.createListenerAnnotation;
     local tlsSecretNameAnnotation = config.tlsSecretNameAnnotation;
+    local certificatePerHostnameAnnotation = config.certificatePerHostnameAnnotation;
 
     local finalizer = 'airlock-microgateway.appuio.io/gateway-listener-manager';
     local parentRefTrackAnnotation = 'internal.gateway-listener-manager.airlock-microgateway.appuio.io/track-parent-refs';
@@ -61,6 +63,11 @@ spec:
       &&
       secretName(obj) != ''
     ;
+
+    local wantsCertificatePerHostname(obj) =
+      std.get(
+        std.get(obj.metadata, 'annotations', {}), certificatePerHostnameAnnotation, 'false'
+      ) == 'true';
 
     local routeHostnameRefs(route) =
       std.mapWithIndex(
@@ -140,7 +147,11 @@ spec:
                       {
                         group: '',
                         kind: 'Secret',
-                        name: secretName(obj),
+                        name:
+                          if wantsCertificatePerHostname(obj) then
+                            '%s-%d' % [ secretName(obj), h.pos ]
+                          else
+                            secretName(obj),
                         namespace: obj.metadata.namespace,
                       },
                     ],

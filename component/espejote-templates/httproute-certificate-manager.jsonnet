@@ -3,6 +3,7 @@ local esp = import 'espejote.libsonnet';
 local config = import 'httproute-certificate-manager/config.json';
 
 local createCertificateAnnotation = config.createCertificateAnnotation;
+local certificatePerHostnameAnnotation = config.certificatePerHostnameAnnotation;
 local clusterIssuerAnnotation = config.clusterIssuerAnnotation;
 local issuerAnnotation = config.issuerAnnotation;
 local tlsSecretNameAnnotation = config.tlsSecretNameAnnotation;
@@ -114,6 +115,33 @@ local issuerForRoute(route) =
     ,
   );
 
+local makeCertificate(route, issuer, secretName, h=null) = {
+  apiVersion: 'cert-manager.io/v1',
+  kind: 'Certificate',
+  metadata: {
+    name: route.metadata.name + '-cert' + if h != null then '-%d' % h.pos else '',
+    namespace: route.metadata.namespace,
+    ownerReferences: [
+      {
+        apiVersion: route.apiVersion,
+        kind: route.kind,
+        controller: true,
+        name: route.metadata.name,
+        uid: route.metadata.uid,
+      },
+    ],
+  },
+  spec: baseCertificateSpec {
+    dnsNames: if h != null then [ h.hostname ] else route.spec.hostnames,
+    issuerRef: issuer,
+    secretName: if h != null then '%s-%d' % [ secretName, h.pos ] else secretName,
+    usages: [
+      'digital signature',
+      'key encipherment',
+    ],
+  },
+};
+
 local certForHTTRoute(route) =
   local secretName = getAnnotation(route, tlsSecretNameAnnotation);
   if getAnnotation(route, createCertificateAnnotation) != 'true' || secretName == '' then
@@ -122,32 +150,19 @@ local certForHTTRoute(route) =
     err('no hostnames found for HTTPRoute %(namespace)s/%(name)s' % route.metadata)
   else
     issuerForRoute(route).match(
-      ok=function(issuer) ok({
-        apiVersion: 'cert-manager.io/v1',
-        kind: 'Certificate',
-        metadata: {
-          name: route.metadata.name + '-cert',
-          namespace: route.metadata.namespace,
-          ownerReferences: [
-            {
-              apiVersion: route.apiVersion,
-              kind: route.kind,
-              controller: true,
-              name: route.metadata.name,
-              uid: route.metadata.uid,
-            },
-          ],
-        },
-        spec: baseCertificateSpec {
-          dnsNames: route.spec.hostnames,
-          issuerRef: issuer,
-          secretName: secretName,
-          usages: [
-            'digital signature',
-            'key encipherment',
-          ],
-        },
-      }),
+      ok=function(issuer) ok(
+        if getAnnotation(route, certificatePerHostnameAnnotation) == 'true' then [
+          makeCertificate(route, issuer, secretName, h)
+          for h in std.mapWithIndex(
+            function(index, hostname) {
+              hostname: hostname,
+              pos: index,
+            }, route.spec.hostnames
+          )
+        ] else [
+          makeCertificate(route, issuer, secretName),
+        ]
+      ),
     )
 ;
 
