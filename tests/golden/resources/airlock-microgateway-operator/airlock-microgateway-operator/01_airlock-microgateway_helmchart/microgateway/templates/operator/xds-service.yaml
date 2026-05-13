@@ -7,11 +7,12 @@ metadata:
     app.kubernetes.io/managed-by: Helm
     app.kubernetes.io/name: microgateway-operator
     app.kubernetes.io/part-of: microgateway
-    app.kubernetes.io/version: 4.8.6
-    helm.sh/chart: microgateway-4.8.6
-  name: airlock-microgateway-operator-xds
+    app.kubernetes.io/version: 4.8.7
+    helm.sh/chart: microgateway-4.8.7
+  name: airlock-microgateway-operator-xds-headless
   namespace: syn-airlock-microgateway
 spec:
+  clusterIP: None
   ports:
     - appProtocol: grpc
       name: xds
@@ -22,4 +23,3 @@ spec:
     app.kubernetes.io/component: controller
     app.kubernetes.io/instance: airlock-microgateway
     app.kubernetes.io/name: microgateway-operator
-    operator.microgateway.airlock.com/isLeader: 'true'
