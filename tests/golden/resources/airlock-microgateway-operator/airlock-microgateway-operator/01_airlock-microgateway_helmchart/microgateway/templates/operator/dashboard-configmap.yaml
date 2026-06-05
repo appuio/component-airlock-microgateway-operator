@@ -99,9 +99,6 @@ data:
               },
               "custom": {
                 "align": "auto",
-                "cellOptions": {
-                  "type": "auto"
-                },
                 "filterable": true,
                 "inspect": true
               },
@@ -288,6 +285,20 @@ data:
                   {
                     "id": "custom.width",
                     "value": 124
+                  }
+                ]
+              },
+              {
+                "matcher": {
+                  "id": "byName",
+                  "options": "Details"
+                },
+                "properties": [
+                  {
+                    "id": "custom.cellOptions",
+                    "value": {
+                      "type": "json-view"
+                    }
                   }
                 ]
               }
@@ -569,7 +580,7 @@ data:
       "timezone": "Europe/Zurich",
       "title": "Airlock Microgateway Access Control - Logs",
       "uid": "ce99ks6s11nuob",
-      "version": 2,
+      "version": 4,
       "weekStart": ""
     }
 kind: ConfigMap
@@ -582,9 +593,9 @@ metadata:
     app.kubernetes.io/managed-by: Helm
     app.kubernetes.io/name: microgateway-operator
     app.kubernetes.io/part-of: microgateway
-    app.kubernetes.io/version: 4.8.7
+    app.kubernetes.io/version: 4.8.8
     grafana_dashboard: '1'
-    helm.sh/chart: microgateway-4.8.7
+    helm.sh/chart: microgateway-4.8.8
   name: airlock-microgateway-dashboard-accessctrllogs
   namespace: syn-airlock-microgateway
 ---
@@ -628,46 +639,44 @@ data:
     \                \"defaults\": {\n                    \"color\": {\n         \
     \               \"fixedColor\": \"text\",\n                        \"mode\": \"\
     fixed\"\n                    },\n                    \"custom\": {\n         \
-    \               \"align\": \"auto\",\n                        \"cellOptions\"\
-    : {\n                            \"type\": \"auto\"\n                        },\n\
-    \                        \"filterable\": true,\n                        \"inspect\"\
-    : true\n                    },\n                    \"mappings\": [],\n      \
-    \              \"thresholds\": {\n                        \"mode\": \"absolute\"\
-    ,\n                        \"steps\": [\n                            {\n     \
-    \                           \"color\": \"green\",\n                          \
-    \      \"value\": null\n                            }\n                      \
-    \  ]\n                    }\n                },\n                \"overrides\"\
-    : [\n                    {\n                        \"matcher\": {\n         \
-    \                   \"id\": \"byName\",\n                            \"options\"\
-    : \"Namespace\"\n                        },\n                        \"properties\"\
-    : [\n                            {\n                                \"id\": \"\
-    custom.width\",\n                                \"value\": 221\n            \
-    \                },\n                            {\n                         \
-    \       \"id\": \"custom.filterable\"\n                            }\n       \
-    \                 ]\n                    },\n                    {\n         \
-    \               \"matcher\": {\n                            \"id\": \"byName\"\
-    ,\n                            \"options\": \"Timestamp\"\n                  \
+    \               \"align\": \"auto\",\n                        \"filterable\":\
+    \ true,\n                        \"inspect\": true\n                    },\n \
+    \                   \"mappings\": [],\n                    \"thresholds\": {\n\
+    \                        \"mode\": \"absolute\",\n                        \"steps\"\
+    : [\n                            {\n                                \"color\"\
+    : \"green\",\n                                \"value\": null\n              \
+    \              }\n                        ]\n                    }\n         \
+    \       },\n                \"overrides\": [\n                    {\n        \
+    \                \"matcher\": {\n                            \"id\": \"byName\"\
+    ,\n                            \"options\": \"Namespace\"\n                  \
     \      },\n                        \"properties\": [\n                       \
     \     {\n                                \"id\": \"custom.width\",\n         \
-    \                       \"value\": 214\n                            },\n     \
-    \                       {\n                                \"id\": \"unit\",\n\
-    \                                \"value\": \"time: YYYY-MM-DD HH:mm:ss.SSS\"\n\
-    \                            },\n                            {\n             \
-    \                   \"id\": \"custom.filterable\"\n                          \
+    \                       \"value\": 221\n                            },\n     \
+    \                       {\n                                \"id\": \"custom.filterable\"\
+    \n                            }\n                        ]\n                 \
+    \   },\n                    {\n                        \"matcher\": {\n      \
+    \                      \"id\": \"byName\",\n                            \"options\"\
+    : \"Timestamp\"\n                        },\n                        \"properties\"\
+    : [\n                            {\n                                \"id\": \"\
+    custom.width\",\n                                \"value\": 214\n            \
+    \                },\n                            {\n                         \
+    \       \"id\": \"unit\",\n                                \"value\": \"time:\
+    \ YYYY-MM-DD HH:mm:ss.SSS\"\n                            },\n                \
+    \            {\n                                \"id\": \"custom.filterable\"\n\
+    \                            }\n                        ]\n                  \
+    \  },\n                    {\n                        \"matcher\": {\n       \
+    \                     \"id\": \"byName\",\n                            \"options\"\
+    : \"HTTP Method\"\n                        },\n                        \"properties\"\
+    : [\n                            {\n                                \"id\": \"\
+    custom.width\",\n                                \"value\": 140\n            \
+    \                }\n                        ]\n                    },\n      \
+    \              {\n                        \"matcher\": {\n                   \
+    \         \"id\": \"byName\",\n                            \"options\": \"Client\
+    \ IP\"\n                        },\n                        \"properties\": [\n\
+    \                            {\n                                \"id\": \"custom.width\"\
+    ,\n                                \"value\": 138\n                          \
     \  }\n                        ]\n                    },\n                    {\n\
     \                        \"matcher\": {\n                            \"id\": \"\
-    byName\",\n                            \"options\": \"HTTP Method\"\n        \
-    \                },\n                        \"properties\": [\n             \
-    \               {\n                                \"id\": \"custom.width\",\n\
-    \                                \"value\": 140\n                            }\n\
-    \                        ]\n                    },\n                    {\n  \
-    \                      \"matcher\": {\n                            \"id\": \"\
-    byName\",\n                            \"options\": \"Client IP\"\n          \
-    \              },\n                        \"properties\": [\n               \
-    \             {\n                                \"id\": \"custom.width\",\n \
-    \                               \"value\": 138\n                            }\n\
-    \                        ]\n                    },\n                    {\n  \
-    \                      \"matcher\": {\n                            \"id\": \"\
     byName\",\n                            \"options\": \"Session ID\"\n         \
     \               },\n                        \"properties\": [\n              \
     \              {\n                                \"id\": \"custom.width\",\n\
@@ -703,20 +712,27 @@ data:
     \             \"properties\": [\n                            {\n             \
     \                   \"id\": \"custom.width\",\n                              \
     \  \"value\": 217\n                            }\n                        ]\n\
-    \                    }\n                ]\n            },\n            \"gridPos\"\
-    : {\n                \"h\": 27,\n                \"w\": 24,\n                \"\
-    x\": 0,\n                \"y\": 0\n            },\n            \"id\": 2,\n  \
-    \          \"options\": {\n                \"cellHeight\": \"sm\",\n         \
-    \       \"footer\": {\n                    \"countRows\": false,\n           \
-    \         \"enablePagination\": true,\n                    \"fields\": \"\",\n\
-    \                    \"reducer\": [\n                        \"sum\"\n       \
-    \             ],\n                    \"show\": false\n                },\n  \
-    \              \"showHeader\": true,\n                \"sortBy\": []\n       \
-    \     },\n            \"pluginVersion\": \"10.2.0\",\n            \"targets\"\
-    : [\n                {\n                    \"datasource\": {\n              \
-    \          \"type\": \"loki\",\n                        \"uid\": \"${DS_LOKI}\"\
-    \n                    },\n                    \"editorMode\": \"code\",\n    \
-    \                \"expr\": \"{container=\\\"airlock-microgateway-engine\\\", pod=~\\\
+    \                      },\n                    {\n                        \"matcher\"\
+    : {\n                          \"id\": \"byName\",\n                         \
+    \ \"options\": \"Details\"\n                        },\n                     \
+    \   \"properties\": [\n                          {\n                         \
+    \   \"id\": \"custom.cellOptions\",\n                            \"value\": {\n\
+    \                              \"type\": \"json-view\"\n                     \
+    \       }\n                          }\n                        ]\n          \
+    \          }\n                ]\n            },\n            \"gridPos\": {\n\
+    \                \"h\": 27,\n                \"w\": 24,\n                \"x\"\
+    : 0,\n                \"y\": 0\n            },\n            \"id\": 2,\n     \
+    \       \"options\": {\n                \"cellHeight\": \"sm\",\n            \
+    \    \"footer\": {\n                    \"countRows\": false,\n              \
+    \      \"enablePagination\": true,\n                    \"fields\": \"\",\n  \
+    \                  \"reducer\": [\n                        \"sum\"\n         \
+    \           ],\n                    \"show\": false\n                },\n    \
+    \            \"showHeader\": true,\n                \"sortBy\": []\n         \
+    \   },\n            \"pluginVersion\": \"10.2.0\",\n            \"targets\": [\n\
+    \                {\n                    \"datasource\": {\n                  \
+    \      \"type\": \"loki\",\n                        \"uid\": \"${DS_LOKI}\"\n\
+    \                    },\n                    \"editorMode\": \"code\",\n     \
+    \               \"expr\": \"{container=\\\"airlock-microgateway-engine\\\", pod=~\\\
     \"${gateway_pod:regex}\\\"} |= \\\"airlock_request_blocked\\\" |= \\\"envoy.access\\\
     \" | line_format `{{ __line__ | replace \\\"\uFFFD\\\" \\\"?\\\"}}` \\n| json\
     \ http_method=\\\"http.request.method\\\", url=\\\"url.path\\\", domain=\\\"url.domain\\\
@@ -868,7 +884,7 @@ data:
     \    \"time\": {\n        \"from\": \"now-15m\",\n        \"to\": \"now\"\n  \
     \  },\n    \"timeRangeUpdatedDuringEditOrView\": false,\n    \"timepicker\": {},\n\
     \    \"timezone\": \"browser\",\n    \"title\": \"Airlock Microgateway Threats\
-    \ Block - Logs\",\n    \"uid\": \"adnyzcvwnyadcc\",\n    \"version\": 4,\n   \
+    \ Block - Logs\",\n    \"uid\": \"adnyzcvwnyadcc\",\n    \"version\": 6,\n   \
     \ \"weekStart\": \"\"\n}"
 kind: ConfigMap
 metadata:
@@ -880,9 +896,9 @@ metadata:
     app.kubernetes.io/managed-by: Helm
     app.kubernetes.io/name: microgateway-operator
     app.kubernetes.io/part-of: microgateway
-    app.kubernetes.io/version: 4.8.7
+    app.kubernetes.io/version: 4.8.8
     grafana_dashboard: '1'
-    helm.sh/chart: microgateway-4.8.7
+    helm.sh/chart: microgateway-4.8.8
   name: airlock-microgateway-dashboard-blocklogs
   namespace: syn-airlock-microgateway
 ---
@@ -1886,9 +1902,9 @@ metadata:
     app.kubernetes.io/managed-by: Helm
     app.kubernetes.io/name: microgateway-operator
     app.kubernetes.io/part-of: microgateway
-    app.kubernetes.io/version: 4.8.7
+    app.kubernetes.io/version: 4.8.8
     grafana_dashboard: '1'
-    helm.sh/chart: microgateway-4.8.7
+    helm.sh/chart: microgateway-4.8.8
   name: airlock-microgateway-dashboard-blockmetrics
   namespace: syn-airlock-microgateway
 ---
@@ -4983,9 +4999,9 @@ metadata:
     app.kubernetes.io/managed-by: Helm
     app.kubernetes.io/name: microgateway-operator
     app.kubernetes.io/part-of: microgateway
-    app.kubernetes.io/version: 4.8.7
+    app.kubernetes.io/version: 4.8.8
     grafana_dashboard: '1'
-    helm.sh/chart: microgateway-4.8.7
+    helm.sh/chart: microgateway-4.8.8
   name: airlock-microgateway-dashboard-downstreammetrics
   namespace: syn-airlock-microgateway
 ---
@@ -5090,9 +5106,6 @@ data:
                         },
                         "custom": {
                             "align": "auto",
-                            "cellOptions": {
-                                "type": "auto"
-                            },
                             "filterable": true,
                             "inspect": true
                         },
@@ -5220,6 +5233,34 @@ data:
                                     "id": "custom.align",
                                     "value": "right"
                                 }
+                            ]
+                          },
+                          {
+                            "matcher": {
+                              "id": "byName",
+                              "options": "Request Header Actions"
+                            },
+                            "properties": [
+                              {
+                                "id": "custom.cellOptions",
+                                "value": {
+                                  "type": "json-view"
+                                }
+                              }
+                            ]
+                          },
+                          {
+                            "matcher": {
+                              "id": "byName",
+                              "options": "Response Header Actions"
+                            },
+                            "properties": [
+                              {
+                                "id": "custom.cellOptions",
+                                "value": {
+                                  "type": "json-view"
+                                }
+                              }
                             ]
                         }
                     ]
@@ -5489,7 +5530,7 @@ data:
         "timezone": "browser",
         "title": "Airlock Microgateway Header Rewrites - Logs",
         "uid": "adnydadenyadcc",
-        "version": 2,
+        "version": 4,
         "weekStart": ""
     }
 kind: ConfigMap
@@ -5502,9 +5543,9 @@ metadata:
     app.kubernetes.io/managed-by: Helm
     app.kubernetes.io/name: microgateway-operator
     app.kubernetes.io/part-of: microgateway
-    app.kubernetes.io/version: 4.8.7
+    app.kubernetes.io/version: 4.8.8
     grafana_dashboard: '1'
-    helm.sh/chart: microgateway-4.8.7
+    helm.sh/chart: microgateway-4.8.8
   name: airlock-microgateway-dashboard-headerlogs
   namespace: syn-airlock-microgateway
 ---
@@ -6079,9 +6120,6 @@ data:
                         },
                         "custom": {
                             "align": "auto",
-                            "cellOptions": {
-                                "type": "auto"
-                            },
                             "inspect": false
                         },
                         "mappings": [],
@@ -6305,9 +6343,6 @@ data:
                         },
                         "custom": {
                             "align": "auto",
-                            "cellOptions": {
-                                "type": "auto"
-                            },
                             "inspect": false
                         },
                         "mappings": [],
@@ -6720,7 +6755,7 @@ data:
         "timezone": "browser",
         "title": "Airlock Microgateway License",
         "uid": "cdpq79bzrr01se",
-        "version": 2,
+        "version": 4,
         "weekStart": ""
     }
 kind: ConfigMap
@@ -6733,9 +6768,9 @@ metadata:
     app.kubernetes.io/managed-by: Helm
     app.kubernetes.io/name: microgateway-operator
     app.kubernetes.io/part-of: microgateway
-    app.kubernetes.io/version: 4.8.7
+    app.kubernetes.io/version: 4.8.8
     grafana_dashboard: '1'
-    helm.sh/chart: microgateway-4.8.7
+    helm.sh/chart: microgateway-4.8.8
   name: airlock-microgateway-dashboard-license
   namespace: syn-airlock-microgateway
 ---
@@ -6780,45 +6815,44 @@ data:
     \                \"color\": {\n                        \"fixedColor\": \"text\"\
     ,\n                        \"mode\": \"fixed\"\n                    },\n     \
     \               \"custom\": {\n                        \"align\": \"auto\",\n\
-    \                        \"cellOptions\": {\n                            \"type\"\
-    : \"auto\"\n                        },\n                        \"filterable\"\
-    : true,\n                        \"inspect\": true\n                    },\n \
-    \                   \"mappings\": [],\n                    \"thresholds\": {\n\
-    \                        \"mode\": \"absolute\",\n                        \"steps\"\
-    : [\n                            {\n                                \"color\"\
-    : \"green\",\n                                \"value\": null\n              \
-    \              }\n                        ]\n                    }\n         \
-    \       },\n                \"overrides\": [\n                    {\n        \
-    \                \"matcher\": {\n                            \"id\": \"byName\"\
-    ,\n                            \"options\": \"Namespace\"\n                  \
+    \                        \"filterable\": true,\n                        \"inspect\"\
+    : true\n                    },\n                    \"mappings\": [],\n      \
+    \              \"thresholds\": {\n                        \"mode\": \"absolute\"\
+    ,\n                        \"steps\": [\n                            {\n     \
+    \                           \"color\": \"green\",\n                          \
+    \      \"value\": null\n                            }\n                      \
+    \  ]\n                    }\n                },\n                \"overrides\"\
+    : [\n                    {\n                        \"matcher\": {\n         \
+    \                   \"id\": \"byName\",\n                            \"options\"\
+    : \"Namespace\"\n                        },\n                        \"properties\"\
+    : [\n                            {\n                                \"id\": \"\
+    custom.width\",\n                                \"value\": 328\n            \
+    \                },\n                            {\n                         \
+    \       \"id\": \"custom.filterable\"\n                            }\n       \
+    \                 ]\n                    },\n                    {\n         \
+    \               \"matcher\": {\n                            \"id\": \"byName\"\
+    ,\n                            \"options\": \"Timestamp\"\n                  \
     \      },\n                        \"properties\": [\n                       \
     \     {\n                                \"id\": \"custom.width\",\n         \
-    \                       \"value\": 328\n                            },\n     \
-    \                       {\n                                \"id\": \"custom.filterable\"\
-    \n                            }\n                        ]\n                 \
-    \   },\n                    {\n                        \"matcher\": {\n      \
-    \                      \"id\": \"byName\",\n                            \"options\"\
-    : \"Timestamp\"\n                        },\n                        \"properties\"\
-    : [\n                            {\n                                \"id\": \"\
-    custom.width\",\n                                \"value\": 176\n            \
-    \                },\n                            {\n                         \
-    \       \"id\": \"unit\",\n                                \"value\": \"time:\
-    \ YYYY-MM-DD HH:mm:ss.SSS\"\n                            },\n                \
-    \            {\n                                \"id\": \"custom.filterable\"\n\
-    \                            }\n                        ]\n                  \
-    \  },\n                    {\n                        \"matcher\": {\n       \
-    \                     \"id\": \"byName\",\n                            \"options\"\
-    : \"HTTP Method\"\n                        },\n                        \"properties\"\
-    : [\n                            {\n                                \"id\": \"\
-    custom.width\",\n                                \"value\": 132\n            \
-    \                }\n                        ]\n                    },\n      \
-    \              {\n                        \"matcher\": {\n                   \
-    \         \"id\": \"byName\",\n                            \"options\": \"Client\
-    \ IP\"\n                        },\n                        \"properties\": [\n\
-    \                            {\n                                \"id\": \"custom.width\"\
-    ,\n                                \"value\": 137\n                          \
+    \                       \"value\": 176\n                            },\n     \
+    \                       {\n                                \"id\": \"unit\",\n\
+    \                                \"value\": \"time: YYYY-MM-DD HH:mm:ss.SSS\"\n\
+    \                            },\n                            {\n             \
+    \                   \"id\": \"custom.filterable\"\n                          \
     \  }\n                        ]\n                    },\n                    {\n\
-    \                      \"matcher\": {\n                        \"id\": \"byName\"\
+    \                        \"matcher\": {\n                            \"id\": \"\
+    byName\",\n                            \"options\": \"HTTP Method\"\n        \
+    \                },\n                        \"properties\": [\n             \
+    \               {\n                                \"id\": \"custom.width\",\n\
+    \                                \"value\": 132\n                            }\n\
+    \                        ]\n                    },\n                    {\n  \
+    \                      \"matcher\": {\n                            \"id\": \"\
+    byName\",\n                            \"options\": \"Client IP\"\n          \
+    \              },\n                        \"properties\": [\n               \
+    \             {\n                                \"id\": \"custom.width\",\n \
+    \                               \"value\": 137\n                            }\n\
+    \                        ]\n                    },\n                    {\n  \
+    \                    \"matcher\": {\n                        \"id\": \"byName\"\
     ,\n                        \"options\": \"Session ID\"\n                     \
     \ },\n                      \"properties\": [\n                        {\n   \
     \                       \"id\": \"custom.width\",\n                          \"\
@@ -6839,88 +6873,95 @@ data:
     value\": \"bytes\"\n                            },\n                         \
     \   {\n                                \"id\": \"custom.align\",\n           \
     \                     \"value\": \"right\"\n                            }\n  \
-    \                      ]\n                    }\n                ]\n         \
-    \   },\n            \"gridPos\": {\n                \"h\": 27,\n             \
-    \   \"w\": 24,\n                \"x\": 0,\n                \"y\": 0\n        \
-    \    },\n            \"id\": 2,\n            \"options\": {\n                \"\
-    cellHeight\": \"sm\",\n                \"footer\": {\n                    \"countRows\"\
-    : false,\n                    \"enablePagination\": true,\n                  \
-    \  \"fields\": \"\",\n                    \"reducer\": [\n                   \
-    \     \"sum\"\n                    ],\n                    \"show\": false\n \
-    \               },\n                \"showHeader\": true,\n                \"\
-    sortBy\": []\n            },\n            \"pluginVersion\": \"10.2.0\",\n   \
-    \         \"targets\": [\n                {\n                    \"datasource\"\
-    : {\n                        \"type\": \"loki\",\n                        \"uid\"\
-    : \"${DS_LOKI}\"\n                    },\n                    \"editorMode\":\
-    \ \"code\",\n                    \"expr\": \"{container=\\\"airlock-microgateway-engine\\\
-    \", pod=~\\\"${gateway_pod:regex}\\\"} |= `log_only` |= `envoy.access` | line_format\
-    \ `{{ __line__ | replace \\\"\uFFFD\\\" \\\"?\\\"}}` | json http_method=\\\"http.request.method\\\
-    \", url=\\\"url.path\\\", domain=\\\"url.domain\\\", request_size=\\\"http.request.bytes\\\
-    \", client_ip=\\\"network.forwarded_ip\\\", request_id=\\\"http.request.id\\\"\
-    , session_id=\\\"airlock.http.session.id\\\", details=\\\"airlock.actions.log_only\\\
-    \", log_type=\\\"event.dataset\\\" | label_format log_count=`{{ len (fromJson\
-    \ .details) }}` | log_type = `envoy.access` | log_count > 0\",\n             \
-    \       \"hide\": false,\n                    \"queryType\": \"range\",\n    \
-    \                \"refId\": \"Log Only Logs\"\n                }\n           \
-    \ ],\n            \"title\": \"Threats Logs Log-Only\",\n            \"transformations\"\
-    : [\n                {\n                    \"id\": \"extractFields\",\n     \
-    \               \"options\": {\n                        \"format\": \"json\",\n\
-    \                        \"source\": \"labels\"\n                    }\n     \
-    \           },\n                {\n                    \"id\": \"filterFieldsByName\"\
-    ,\n                    \"options\": {\n                        \"byVariable\"\
-    : false,\n                        \"include\": {\n                           \
-    \ \"names\": [\n                                \"Time\",\n                  \
-    \              \"client_ip\",\n                                \"details\",\n\
-    \                                \"domain\",\n                               \
-    \ \"http_method\",\n                                \"namespace\",\n         \
-    \                       \"session_id\",\n                                \"request_id\"\
-    ,\n                                \"request_size\",\n                       \
-    \         \"url\"\n                            ]\n                        }\n\
-    \                    }\n                },\n                {\n              \
-    \      \"id\": \"organize\",\n                    \"options\": {\n           \
-    \             \"excludeByName\": {\n                            \"Line\": true,\n\
-    \                            \"id\": true,\n                            \"labelTypes\"\
-    : true,\n                            \"labels\": true,\n                     \
-    \       \"tsNs\": false\n                        },\n                        \"\
-    includeByName\": {},\n                        \"indexByName\": {\n           \
-    \                 \"Time\": 0,\n                            \"client_ip\": 8,\n\
-    \                            \"details\": 7,\n                            \"domain\"\
-    : 2,\n                            \"http_method\": 4,\n                      \
-    \      \"namespace\": 1,\n                            \"request_id\": 10,\n  \
-    \                          \"session_id\": 9,\n                            \"\
-    request_size\": 6,\n                            \"url\": 5\n                 \
-    \       },\n                        \"renameByName\": {\n                    \
-    \        \"Time\": \"Timestamp\",\n                            \"client_ip\":\
-    \ \"Client IP\",\n                            \"details\": \"Details\",\n    \
-    \                        \"domain\": \"URL Domain\",\n                       \
-    \     \"http_method\": \"HTTP Method\",\n                            \"namespace\"\
-    : \"Namespace\",\n                            \"session_id\": \"Session ID\",\n\
-    \                            \"request_id\": \"Request ID\",\n               \
-    \             \"request_size\": \"Request Size\",\n                          \
-    \  \"url\": \"URL Path\"\n                        }\n                    }\n \
-    \               }\n            ],\n            \"type\": \"table\"\n        }\n\
-    \    ],\n    \"schemaVersion\": 39,\n    \"tags\": [\n        \"airlock-microgateway\"\
-    \n    ],\n    \"templating\": {\n        \"list\": [\n            {\n        \
-    \        \"current\": {},\n                \"hide\": 2,\n                \"includeAll\"\
-    : false,\n                \"label\": \"DS_LOKI\",\n                \"multi\":\
-    \ false,\n                \"name\": \"DS_LOKI\",\n                \"options\"\
-    : [],\n                \"query\": \"loki\",\n                \"refresh\": 1,\n\
-    \                \"regex\": \"\",\n                \"skipUrlSync\": false,\n \
-    \               \"type\": \"datasource\"\n            },\n            {\n    \
-    \            \"current\": {},\n                \"hide\": 2,\n                \"\
-    includeAll\": false,\n                \"label\": \"DS_PROMETHEUS\",\n        \
-    \        \"name\": \"DS_PROMETHEUS\",\n                \"options\": [],\n    \
-    \            \"query\": \"prometheus\",\n                \"refresh\": 1,\n   \
-    \             \"regex\": \"\",\n                \"type\": \"datasource\"\n   \
-    \         },\n            {\n                \"current\": {},\n              \
-    \  \"datasource\": {\n                    \"type\": \"prometheus\",\n        \
-    \            \"uid\": \"${DS_PROMETHEUS}\"\n                },\n             \
-    \   \"definition\": \"label_values(microgateway_build_info,gateway_kind)\",\n\
-    \                \"description\": \"Allows filtering on the gateway kind.\",\n\
-    \                \"includeAll\": true,\n                \"label\": \"Gateway Kind\"\
-    ,\n                \"name\": \"gateway_kind\",\n                \"options\": [],\n\
-    \                \"query\": {\n                    \"qryType\": 1,\n         \
-    \           \"query\": \"label_values(microgateway_build_info,gateway_kind)\"\
+    \                      ]\n                      },\n                      {\n\
+    \                        \"matcher\": {\n                          \"id\": \"\
+    byName\",\n                          \"options\": \"Details\"\n              \
+    \          },\n                        \"properties\": [\n                   \
+    \       {\n                            \"id\": \"custom.cellOptions\",\n     \
+    \                       \"value\": {\n                              \"type\":\
+    \ \"json-view\"\n                            }\n                          }\n\
+    \                        ]\n                    }\n                ]\n       \
+    \     },\n            \"gridPos\": {\n                \"h\": 27,\n           \
+    \     \"w\": 24,\n                \"x\": 0,\n                \"y\": 0\n      \
+    \      },\n            \"id\": 2,\n            \"options\": {\n              \
+    \  \"cellHeight\": \"sm\",\n                \"footer\": {\n                  \
+    \  \"countRows\": false,\n                    \"enablePagination\": true,\n  \
+    \                  \"fields\": \"\",\n                    \"reducer\": [\n   \
+    \                     \"sum\"\n                    ],\n                    \"\
+    show\": false\n                },\n                \"showHeader\": true,\n   \
+    \             \"sortBy\": []\n            },\n            \"pluginVersion\": \"\
+    10.2.0\",\n            \"targets\": [\n                {\n                   \
+    \ \"datasource\": {\n                        \"type\": \"loki\",\n           \
+    \             \"uid\": \"${DS_LOKI}\"\n                    },\n              \
+    \      \"editorMode\": \"code\",\n                    \"expr\": \"{container=\\\
+    \"airlock-microgateway-engine\\\", pod=~\\\"${gateway_pod:regex}\\\"} |= `log_only`\
+    \ |= `envoy.access` | line_format `{{ __line__ | replace \\\"\uFFFD\\\" \\\"?\\\
+    \"}}` | json http_method=\\\"http.request.method\\\", url=\\\"url.path\\\", domain=\\\
+    \"url.domain\\\", request_size=\\\"http.request.bytes\\\", client_ip=\\\"network.forwarded_ip\\\
+    \", request_id=\\\"http.request.id\\\", session_id=\\\"airlock.http.session.id\\\
+    \", details=\\\"airlock.actions.log_only\\\", log_type=\\\"event.dataset\\\" |\
+    \ label_format log_count=`{{ len (fromJson .details) }}` | log_type = `envoy.access`\
+    \ | log_count > 0\",\n                    \"hide\": false,\n                 \
+    \   \"queryType\": \"range\",\n                    \"refId\": \"Log Only Logs\"\
+    \n                }\n            ],\n            \"title\": \"Threats Logs Log-Only\"\
+    ,\n            \"transformations\": [\n                {\n                   \
+    \ \"id\": \"extractFields\",\n                    \"options\": {\n           \
+    \             \"format\": \"json\",\n                        \"source\": \"labels\"\
+    \n                    }\n                },\n                {\n             \
+    \       \"id\": \"filterFieldsByName\",\n                    \"options\": {\n\
+    \                        \"byVariable\": false,\n                        \"include\"\
+    : {\n                            \"names\": [\n                              \
+    \  \"Time\",\n                                \"client_ip\",\n               \
+    \                 \"details\",\n                                \"domain\",\n\
+    \                                \"http_method\",\n                          \
+    \      \"namespace\",\n                                \"session_id\",\n     \
+    \                           \"request_id\",\n                                \"\
+    request_size\",\n                                \"url\"\n                   \
+    \         ]\n                        }\n                    }\n              \
+    \  },\n                {\n                    \"id\": \"organize\",\n        \
+    \            \"options\": {\n                        \"excludeByName\": {\n  \
+    \                          \"Line\": true,\n                            \"id\"\
+    : true,\n                            \"labelTypes\": true,\n                 \
+    \           \"labels\": true,\n                            \"tsNs\": false\n \
+    \                       },\n                        \"includeByName\": {},\n \
+    \                       \"indexByName\": {\n                            \"Time\"\
+    : 0,\n                            \"client_ip\": 8,\n                        \
+    \    \"details\": 7,\n                            \"domain\": 2,\n           \
+    \                 \"http_method\": 4,\n                            \"namespace\"\
+    : 1,\n                            \"request_id\": 10,\n                      \
+    \      \"session_id\": 9,\n                            \"request_size\": 6,\n\
+    \                            \"url\": 5\n                        },\n        \
+    \                \"renameByName\": {\n                            \"Time\": \"\
+    Timestamp\",\n                            \"client_ip\": \"Client IP\",\n    \
+    \                        \"details\": \"Details\",\n                         \
+    \   \"domain\": \"URL Domain\",\n                            \"http_method\":\
+    \ \"HTTP Method\",\n                            \"namespace\": \"Namespace\",\n\
+    \                            \"session_id\": \"Session ID\",\n               \
+    \             \"request_id\": \"Request ID\",\n                            \"\
+    request_size\": \"Request Size\",\n                            \"url\": \"URL\
+    \ Path\"\n                        }\n                    }\n                }\n\
+    \            ],\n            \"type\": \"table\"\n        }\n    ],\n    \"schemaVersion\"\
+    : 39,\n    \"tags\": [\n        \"airlock-microgateway\"\n    ],\n    \"templating\"\
+    : {\n        \"list\": [\n            {\n                \"current\": {},\n  \
+    \              \"hide\": 2,\n                \"includeAll\": false,\n        \
+    \        \"label\": \"DS_LOKI\",\n                \"multi\": false,\n        \
+    \        \"name\": \"DS_LOKI\",\n                \"options\": [],\n          \
+    \      \"query\": \"loki\",\n                \"refresh\": 1,\n               \
+    \ \"regex\": \"\",\n                \"skipUrlSync\": false,\n                \"\
+    type\": \"datasource\"\n            },\n            {\n                \"current\"\
+    : {},\n                \"hide\": 2,\n                \"includeAll\": false,\n\
+    \                \"label\": \"DS_PROMETHEUS\",\n                \"name\": \"DS_PROMETHEUS\"\
+    ,\n                \"options\": [],\n                \"query\": \"prometheus\"\
+    ,\n                \"refresh\": 1,\n                \"regex\": \"\",\n       \
+    \         \"type\": \"datasource\"\n            },\n            {\n          \
+    \      \"current\": {},\n                \"datasource\": {\n                 \
+    \   \"type\": \"prometheus\",\n                    \"uid\": \"${DS_PROMETHEUS}\"\
+    \n                },\n                \"definition\": \"label_values(microgateway_build_info,gateway_kind)\"\
+    ,\n                \"description\": \"Allows filtering on the gateway kind.\"\
+    ,\n                \"includeAll\": true,\n                \"label\": \"Gateway\
+    \ Kind\",\n                \"name\": \"gateway_kind\",\n                \"options\"\
+    : [],\n                \"query\": {\n                    \"qryType\": 1,\n   \
+    \                 \"query\": \"label_values(microgateway_build_info,gateway_kind)\"\
     ,\n                    \"refId\": \"PrometheusVariableQueryEditor-VariableQuery\"\
     \n                },\n                \"refresh\": 1,\n                \"regex\"\
     : \"\",\n                \"type\": \"query\"\n            },\n            {\n\
@@ -6980,7 +7021,7 @@ data:
     : \"query\"\n            }\n        ]\n    },\n    \"time\": {\n        \"from\"\
     : \"now-15m\",\n        \"to\": \"now\"\n    },\n    \"timepicker\": {},\n   \
     \ \"timezone\": \"browser\",\n    \"title\": \"Airlock Microgateway Threats LogOnly\
-    \ - Logs\",\n    \"uid\": \"adnasdfdwnyadcc\",\n    \"version\": 8,\n    \"weekStart\"\
+    \ - Logs\",\n    \"uid\": \"adnasdfdwnyadcc\",\n    \"version\": 10,\n    \"weekStart\"\
     : \"\"\n}"
 kind: ConfigMap
 metadata:
@@ -6992,9 +7033,9 @@ metadata:
     app.kubernetes.io/managed-by: Helm
     app.kubernetes.io/name: microgateway-operator
     app.kubernetes.io/part-of: microgateway
-    app.kubernetes.io/version: 4.8.7
+    app.kubernetes.io/version: 4.8.8
     grafana_dashboard: '1'
-    helm.sh/chart: microgateway-4.8.7
+    helm.sh/chart: microgateway-4.8.8
   name: airlock-microgateway-dashboard-logonlylogs
   namespace: syn-airlock-microgateway
 ---
@@ -7856,9 +7897,9 @@ metadata:
     app.kubernetes.io/managed-by: Helm
     app.kubernetes.io/name: microgateway-operator
     app.kubernetes.io/part-of: microgateway
-    app.kubernetes.io/version: 4.8.7
+    app.kubernetes.io/version: 4.8.8
     grafana_dashboard: '1'
-    helm.sh/chart: microgateway-4.8.7
+    helm.sh/chart: microgateway-4.8.8
   name: airlock-microgateway-dashboard-logonlymetrics
   namespace: syn-airlock-microgateway
 ---
@@ -9142,9 +9183,9 @@ metadata:
     app.kubernetes.io/managed-by: Helm
     app.kubernetes.io/name: microgateway-operator
     app.kubernetes.io/part-of: microgateway
-    app.kubernetes.io/version: 4.8.7
+    app.kubernetes.io/version: 4.8.8
     grafana_dashboard: '1'
-    helm.sh/chart: microgateway-4.8.7
+    helm.sh/chart: microgateway-4.8.8
   name: airlock-microgateway-dashboard-overview
   namespace: syn-airlock-microgateway
 ---
@@ -9249,9 +9290,6 @@ data:
               },
               "custom": {
                 "align": "auto",
-                "cellOptions": {
-                  "type": "auto"
-                },
                 "filterable": true,
                 "inspect": true
               },
@@ -9429,6 +9467,20 @@ data:
                   {
                     "id": "custom.width",
                     "value": 272
+                  }
+                ]
+              },
+              {
+                "matcher": {
+                  "id": "byName",
+                  "options": "Details"
+                },
+                "properties": [
+                  {
+                    "id": "custom.cellOptions",
+                    "value": {
+                      "type": "json-view"
+                    }
                   }
                 ]
               }
@@ -9701,7 +9753,7 @@ data:
       "timezone": "browser",
       "title": "Airlock Microgateway Requests - Logs",
       "uid": "ee99ioci6gydcb",
-      "version": 2,
+      "version": 4,
       "weekStart": ""
     }
 kind: ConfigMap
@@ -9714,9 +9766,9 @@ metadata:
     app.kubernetes.io/managed-by: Helm
     app.kubernetes.io/name: microgateway-operator
     app.kubernetes.io/part-of: microgateway
-    app.kubernetes.io/version: 4.8.7
+    app.kubernetes.io/version: 4.8.8
     grafana_dashboard: '1'
-    helm.sh/chart: microgateway-4.8.7
+    helm.sh/chart: microgateway-4.8.8
   name: airlock-microgateway-dashboard-requestlogs
   namespace: syn-airlock-microgateway
 ---
@@ -11491,9 +11543,9 @@ metadata:
     app.kubernetes.io/managed-by: Helm
     app.kubernetes.io/name: microgateway-operator
     app.kubernetes.io/part-of: microgateway
-    app.kubernetes.io/version: 4.8.7
+    app.kubernetes.io/version: 4.8.8
     grafana_dashboard: '1'
-    helm.sh/chart: microgateway-4.8.7
+    helm.sh/chart: microgateway-4.8.8
   name: airlock-microgateway-dashboard-systemmetrics
   namespace: syn-airlock-microgateway
 ---
@@ -14937,8 +14989,8 @@ metadata:
     app.kubernetes.io/managed-by: Helm
     app.kubernetes.io/name: microgateway-operator
     app.kubernetes.io/part-of: microgateway
-    app.kubernetes.io/version: 4.8.7
+    app.kubernetes.io/version: 4.8.8
     grafana_dashboard: '1'
-    helm.sh/chart: microgateway-4.8.7
+    helm.sh/chart: microgateway-4.8.8
   name: airlock-microgateway-dashboard-upstreammetrics
   namespace: syn-airlock-microgateway
