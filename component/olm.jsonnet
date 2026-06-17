@@ -125,6 +125,7 @@ local manual_approval_upgradehook = {
     events: [ 'Start' ],
     template: {
       spec: {
+        activeDeadlineSeconds: 900,
         template: {
           spec: {
             restartPolicy: 'Never',
