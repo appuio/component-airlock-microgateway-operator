@@ -62,6 +62,20 @@ local Gateway = function(name='') {
 };
 
 /**
+ * Helper function to create Gateway API HTTPRoute resources
+ *
+ * \arg name used as `metadata.name`
+ * \returns a partial `HTTPRoute` object
+ */
+local HTTPRoute = function(name='') {
+  apiVersion: '%s/v1' % gateway_group,
+  kind: 'HTTPRoute',
+  metadata: {
+    name: name,
+  },
+};
+
+/**
  * Helper function to create Airlock Microgateway SessionHandling resources
  *
  * \arg name used as `metadata.name`
@@ -93,6 +107,7 @@ local RedisProvider = function(name='') {
   GatewayParameters: GatewayParameters,
   GatewayClass: GatewayClass,
   Gateway: Gateway,
+  HTTPRoute: HTTPRoute,
   RedisProvider: RedisProvider,
   SessionHandling: SessionHandling,
 
