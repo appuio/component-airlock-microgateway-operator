@@ -7,8 +7,8 @@ metadata:
     app.kubernetes.io/managed-by: Helm
     app.kubernetes.io/name: microgateway-operator
     app.kubernetes.io/part-of: microgateway
-    app.kubernetes.io/version: 4.8.8
-    helm.sh/chart: microgateway-4.8.8
+    app.kubernetes.io/version: 4.8.9
+    helm.sh/chart: microgateway-4.8.9
   name: airlock-microgateway-operator
   namespace: syn-airlock-microgateway
 spec:
@@ -23,7 +23,7 @@ spec:
   template:
     metadata:
       annotations:
-        checksum/config: ca6b5d10757bbc51bcd6b26b05370d4f5f2bde5924faa18956f7d9dd08b717b9
+        checksum/config: cfb02e267959553bf8683ad750febd6a39a99e50beb13cedbb4eeab1dc6e493f
         kubectl.kubernetes.io/default-container: manager
       labels:
         app.kubernetes.io/component: controller
@@ -31,17 +31,17 @@ spec:
         app.kubernetes.io/managed-by: Helm
         app.kubernetes.io/name: microgateway-operator
         app.kubernetes.io/part-of: microgateway
-        app.kubernetes.io/version: 4.8.8
-        helm.sh/chart: microgateway-4.8.8
+        app.kubernetes.io/version: 4.8.9
+        helm.sh/chart: microgateway-4.8.9
     spec:
       containers:
         - args:
             - --config=/app/config/operator_config.yaml
           env:
             - name: ENGINE_IMAGE
-              value: quay.io/airlock/microgateway-engine@sha256:3e321e53eec4e60f82efbfae81556a0ac5a9bae9ab67ec8b2bc018808cc6230c
+              value: quay.io/airlock/microgateway-engine@sha256:8f8eed025235d17fafbfcda0086ecca6b370f9bd64414ac2934fe013b3420077
             - name: SESSION_AGENT_IMAGE
-              value: quay.io/airlock/microgateway-session-agent@sha256:64f4bdd0fe7acc3c828e3ed3758860f70c9bd8d732b35f52ad9d5ac987cfaa06
+              value: quay.io/airlock/microgateway-session-agent@sha256:f3a61787813ee29ea0db9904c4601c4a5707fb860fd23bc3aef13a6637d3d02b
             - name: OPERATOR_NAME
               valueFrom:
                 fieldRef:
@@ -64,7 +64,7 @@ spec:
               value: 'true'
             - name: GATEWAY_API_POD_MONITOR_ADDITIONAL_LABELS
               value: release=kube-prometheus-stack
-          image: quay.io/airlock/microgateway-operator@sha256:e34ec2c62b15f5488b0169580c7b6f4c42e92a0fa062fb2d601162e12153527b
+          image: quay.io/airlock/microgateway-operator@sha256:7a5510a2fe9ca786c18f24f1fcdb63aaa3c8b0d01bc501bc9c7c6607b8d618b0
           imagePullPolicy: IfNotPresent
           livenessProbe:
             httpGet:

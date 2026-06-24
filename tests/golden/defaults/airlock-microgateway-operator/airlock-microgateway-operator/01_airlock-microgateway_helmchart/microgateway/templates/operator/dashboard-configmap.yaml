@@ -593,9 +593,9 @@ metadata:
     app.kubernetes.io/managed-by: Helm
     app.kubernetes.io/name: microgateway-operator
     app.kubernetes.io/part-of: microgateway
-    app.kubernetes.io/version: 4.8.8
+    app.kubernetes.io/version: 4.8.9
     grafana_dashboard: '1'
-    helm.sh/chart: microgateway-4.8.8
+    helm.sh/chart: microgateway-4.8.9
   name: airlock-microgateway-dashboard-accessctrllogs
   namespace: syn-airlock-microgateway
 ---
@@ -896,9 +896,9 @@ metadata:
     app.kubernetes.io/managed-by: Helm
     app.kubernetes.io/name: microgateway-operator
     app.kubernetes.io/part-of: microgateway
-    app.kubernetes.io/version: 4.8.8
+    app.kubernetes.io/version: 4.8.9
     grafana_dashboard: '1'
-    helm.sh/chart: microgateway-4.8.8
+    helm.sh/chart: microgateway-4.8.9
   name: airlock-microgateway-dashboard-blocklogs
   namespace: syn-airlock-microgateway
 ---
@@ -1902,9 +1902,9 @@ metadata:
     app.kubernetes.io/managed-by: Helm
     app.kubernetes.io/name: microgateway-operator
     app.kubernetes.io/part-of: microgateway
-    app.kubernetes.io/version: 4.8.8
+    app.kubernetes.io/version: 4.8.9
     grafana_dashboard: '1'
-    helm.sh/chart: microgateway-4.8.8
+    helm.sh/chart: microgateway-4.8.9
   name: airlock-microgateway-dashboard-blockmetrics
   namespace: syn-airlock-microgateway
 ---
@@ -4999,9 +4999,9 @@ metadata:
     app.kubernetes.io/managed-by: Helm
     app.kubernetes.io/name: microgateway-operator
     app.kubernetes.io/part-of: microgateway
-    app.kubernetes.io/version: 4.8.8
+    app.kubernetes.io/version: 4.8.9
     grafana_dashboard: '1'
-    helm.sh/chart: microgateway-4.8.8
+    helm.sh/chart: microgateway-4.8.9
   name: airlock-microgateway-dashboard-downstreammetrics
   namespace: syn-airlock-microgateway
 ---
@@ -5543,9 +5543,9 @@ metadata:
     app.kubernetes.io/managed-by: Helm
     app.kubernetes.io/name: microgateway-operator
     app.kubernetes.io/part-of: microgateway
-    app.kubernetes.io/version: 4.8.8
+    app.kubernetes.io/version: 4.8.9
     grafana_dashboard: '1'
-    helm.sh/chart: microgateway-4.8.8
+    helm.sh/chart: microgateway-4.8.9
   name: airlock-microgateway-dashboard-headerlogs
   namespace: syn-airlock-microgateway
 ---
@@ -6768,9 +6768,9 @@ metadata:
     app.kubernetes.io/managed-by: Helm
     app.kubernetes.io/name: microgateway-operator
     app.kubernetes.io/part-of: microgateway
-    app.kubernetes.io/version: 4.8.8
+    app.kubernetes.io/version: 4.8.9
     grafana_dashboard: '1'
-    helm.sh/chart: microgateway-4.8.8
+    helm.sh/chart: microgateway-4.8.9
   name: airlock-microgateway-dashboard-license
   namespace: syn-airlock-microgateway
 ---
@@ -7033,9 +7033,9 @@ metadata:
     app.kubernetes.io/managed-by: Helm
     app.kubernetes.io/name: microgateway-operator
     app.kubernetes.io/part-of: microgateway
-    app.kubernetes.io/version: 4.8.8
+    app.kubernetes.io/version: 4.8.9
     grafana_dashboard: '1'
-    helm.sh/chart: microgateway-4.8.8
+    helm.sh/chart: microgateway-4.8.9
   name: airlock-microgateway-dashboard-logonlylogs
   namespace: syn-airlock-microgateway
 ---
@@ -7897,9 +7897,9 @@ metadata:
     app.kubernetes.io/managed-by: Helm
     app.kubernetes.io/name: microgateway-operator
     app.kubernetes.io/part-of: microgateway
-    app.kubernetes.io/version: 4.8.8
+    app.kubernetes.io/version: 4.8.9
     grafana_dashboard: '1'
-    helm.sh/chart: microgateway-4.8.8
+    helm.sh/chart: microgateway-4.8.9
   name: airlock-microgateway-dashboard-logonlymetrics
   namespace: syn-airlock-microgateway
 ---
@@ -9183,9 +9183,9 @@ metadata:
     app.kubernetes.io/managed-by: Helm
     app.kubernetes.io/name: microgateway-operator
     app.kubernetes.io/part-of: microgateway
-    app.kubernetes.io/version: 4.8.8
+    app.kubernetes.io/version: 4.8.9
     grafana_dashboard: '1'
-    helm.sh/chart: microgateway-4.8.8
+    helm.sh/chart: microgateway-4.8.9
   name: airlock-microgateway-dashboard-overview
   namespace: syn-airlock-microgateway
 ---
@@ -9766,9 +9766,9 @@ metadata:
     app.kubernetes.io/managed-by: Helm
     app.kubernetes.io/name: microgateway-operator
     app.kubernetes.io/part-of: microgateway
-    app.kubernetes.io/version: 4.8.8
+    app.kubernetes.io/version: 4.8.9
     grafana_dashboard: '1'
-    helm.sh/chart: microgateway-4.8.8
+    helm.sh/chart: microgateway-4.8.9
   name: airlock-microgateway-dashboard-requestlogs
   namespace: syn-airlock-microgateway
 ---
@@ -11543,9 +11543,9 @@ metadata:
     app.kubernetes.io/managed-by: Helm
     app.kubernetes.io/name: microgateway-operator
     app.kubernetes.io/part-of: microgateway
-    app.kubernetes.io/version: 4.8.8
+    app.kubernetes.io/version: 4.8.9
     grafana_dashboard: '1'
-    helm.sh/chart: microgateway-4.8.8
+    helm.sh/chart: microgateway-4.8.9
   name: airlock-microgateway-dashboard-systemmetrics
   namespace: syn-airlock-microgateway
 ---
@@ -14989,8 +14989,8 @@ metadata:
     app.kubernetes.io/managed-by: Helm
     app.kubernetes.io/name: microgateway-operator
     app.kubernetes.io/part-of: microgateway
-    app.kubernetes.io/version: 4.8.8
+    app.kubernetes.io/version: 4.8.9
     grafana_dashboard: '1'
-    helm.sh/chart: microgateway-4.8.8
+    helm.sh/chart: microgateway-4.8.9
   name: airlock-microgateway-dashboard-upstreammetrics
   namespace: syn-airlock-microgateway
