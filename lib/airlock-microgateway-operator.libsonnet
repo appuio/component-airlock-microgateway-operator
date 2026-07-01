@@ -30,6 +30,9 @@ local GatewayParameters = function(name='') {
   kind: 'GatewayParameters',
   metadata: {
     name: name,
+    annotations: {
+      'argocd.argoproj.io/sync-options': 'SkipDryRunOnMissingResource=true',
+    },
   },
 };
 
@@ -44,6 +47,9 @@ local GatewayClass = function(name='') {
   kind: 'GatewayClass',
   metadata: {
     name: name,
+    annotations: {
+      'argocd.argoproj.io/sync-options': 'SkipDryRunOnMissingResource=true',
+    },
   },
 };
 
@@ -58,6 +64,9 @@ local Gateway = function(name='') {
   kind: 'Gateway',
   metadata: {
     name: name,
+    annotations: {
+      'argocd.argoproj.io/sync-options': 'SkipDryRunOnMissingResource=true',
+    },
   },
 };
 
@@ -72,6 +81,9 @@ local SessionHandling = function(name='') {
   kind: 'SessionHandling',
   metadata: {
     name: name,
+    annotations: {
+      'argocd.argoproj.io/sync-options': 'SkipDryRunOnMissingResource=true',
+    },
   },
 };
 
@@ -86,6 +98,9 @@ local RedisProvider = function(name='') {
   kind: 'RedisProvider',
   metadata: {
     name: name,
+    annotations: {
+      'argocd.argoproj.io/sync-options': 'SkipDryRunOnMissingResource=true',
+    },
   },
 };
 
