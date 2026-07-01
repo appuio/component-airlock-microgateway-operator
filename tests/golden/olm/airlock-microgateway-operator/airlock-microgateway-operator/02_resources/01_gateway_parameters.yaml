@@ -1,6 +1,8 @@
 apiVersion: microgateway.airlock.com/v1alpha1
 kind: GatewayParameters
 metadata:
+  annotations:
+    argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
   name: airlock
   namespace: airlock-gateway
 spec:
@@ -23,6 +25,8 @@ spec:
 apiVersion: microgateway.airlock.com/v1alpha1
 kind: GatewayParameters
 metadata:
+  annotations:
+    argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
   name: airlock
   namespace: syn-airlock-microgateway
 spec:
