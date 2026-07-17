@@ -100,7 +100,7 @@ parameters:
 
     charts:
       microgateway:
-        version: "4.8.10"
+        version: "5.1.3"
         source: "oci://quay.io/airlockcharts/microgateway"
 
     images:
