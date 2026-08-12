@@ -2,6 +2,12 @@
 
 The parent key for all of the following parameters is `airlock_microgateway_operator`.
 
+[IMPORTANT]
+====
+This component requires https://github.com/projectsyn/component-gateway-api[component-gateway-api] to be present in the cluster's `applications`.
+That component installs the upstream Gateway API CRDs and provides the component library which this component uses to generate Gateway API resources such as `GatewayClass` and `Gateway`.
+====
+
 == `namespace`
 
 [horizontal]
@@ -204,37 +210,6 @@ See the https://cert-manager.io/docs/usage/certificate/#creating-certificate-res
 The HTTPRoute Certificate Manager unconditionally sets fields `spec.dnsNames`, `spec.issuerRef`, and `spec.secretName` based on `HTTPRoute` or `Gateway` annotations.
 Additionally the HTTPRoute Certificate Manager unconditionally sets field `spec.usages` to `['digital signature', 'key encipherment']`.
 ====
-
-== `gateway_api`
-
-[horizontal]
-type:: object
-
-Configuration for Kubernetes Gateway API integration.
-
-=== `enabled`
-
-[horizontal]
-type:: boolean
-default:: `true`
-
-Whether to install the upstream Kubernetes Gateway API.
-
-=== `version`
-
-[horizontal]
-type:: string
-default:: `v1.2.1`
-
-The version of Kubernetes Gateway API to install.
-
-=== `source`
-
-[horizontal]
-type:: string
-default:: `https://github.com/kubernetes-sigs/gateway-api/releases/download/${airlock_microgateway:gateway_api:version}/standard-install.yaml`
-
-The source URL for the Kubernetes Gateway API installation.
 
 == `airlock_xopenshift`
 
@@ -654,10 +629,6 @@ parameters:
       namespace_selector:
         matchLabels:
           'appuio.ch/waf': 'airlock'
-
-    gateway_api:
-      enabled: true
-      version: "v1.2.1"
 
     charts:
       microgateway:

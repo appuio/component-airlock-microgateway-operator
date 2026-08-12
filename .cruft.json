@@ -7,7 +7,7 @@
       "name": "airlock-microgateway-operator",
       "slug": "airlock-microgateway-operator",
       "parameter_key": "airlock_microgateway_operator",
-      "test_cases": "defaults disable-gateway-api olm resources",
+      "test_cases": "defaults olm resources",
       "add_lib": "y",
       "add_pp": "n",
       "add_golden": "y",
@@ -30,3 +30,4 @@
   },
   "directory": null
 }
+

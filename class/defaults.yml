@@ -31,14 +31,6 @@ parameters:
       issuer_annotation: airlock-microgateway.appuio.io/issuer
       base_certificate_spec: {}
 
-    gateway_api:
-      # Installs upstream Kubernetes Gateway API if true
-      enabled: true
-      # Kubernetes Gateway API version
-      version: "v1.2.1"
-      # Upstream Kubernetes Gateway API source
-      source: https://github.com/kubernetes-sigs/gateway-api/releases/download/${airlock_microgateway_operator:gateway_api:version}/standard-install.yaml
-
     airlock_xopenshift:
       enabled: false
       version: "v1.3.0"

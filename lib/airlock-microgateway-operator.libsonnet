@@ -5,10 +5,14 @@
 local kap = import 'lib/kapitan.libjsonnet';
 local kube = import 'lib/kube.libjsonnet';
 
-/**
- * The main Gateway API K8s API group
- */
-local gateway_group = 'gateway.networking.k8s.io';
+local inv = kap.inventory();
+
+local gw =
+  if std.member(inv.applications, 'gateway-api') then
+    import 'lib/gateway-api.libsonnet'
+  else
+    error 'Application "gateway-api" is required for the Gateway API helpers provided by lib/airlock-microgateway-operator.libsonnet';
+
 /**
  * The main Airlock Microgateway K8s API group
  */
@@ -28,40 +32,6 @@ local xopenshift_group = 'x-openshift.microgateway.airlock.com';
 local GatewayParameters = function(name='') {
   apiVersion: '%s/v1alpha1' % airlock_group,
   kind: 'GatewayParameters',
-  metadata: {
-    name: name,
-    annotations: {
-      'argocd.argoproj.io/sync-options': 'SkipDryRunOnMissingResource=true',
-    },
-  },
-};
-
-/**
- * Helper function to create Gateway API GatewayClass resources
- *
- * \arg name used as `metadata.name`
- * \returns a partial `GatewayClass` object
- */
-local GatewayClass = function(name='') {
-  apiVersion: '%s/v1' % gateway_group,
-  kind: 'GatewayClass',
-  metadata: {
-    name: name,
-    annotations: {
-      'argocd.argoproj.io/sync-options': 'SkipDryRunOnMissingResource=true',
-    },
-  },
-};
-
-/**
- * Helper function to create Gateway API Gateway resources
- *
- * \arg name used as `metadata.name`
- * \returns a partial `Gateway` object
- */
-local Gateway = function(name='') {
-  apiVersion: '%s/v1' % gateway_group,
-  kind: 'Gateway',
   metadata: {
     name: name,
     annotations: {
@@ -106,12 +76,12 @@ local RedisProvider = function(name='') {
 
 {
   GatewayParameters: GatewayParameters,
-  GatewayClass: GatewayClass,
-  Gateway: Gateway,
+  GatewayClass: gw.GatewayClass,
+  Gateway: gw.Gateway,
   RedisProvider: RedisProvider,
   SessionHandling: SessionHandling,
 
-  gatewayApiGroup: gateway_group,
+  gatewayApiGroup: gw.gatewayApiGroup,
   airlockApiGroup: airlock_group,
   xopenshiftApiGroup: xopenshift_group,
 }
