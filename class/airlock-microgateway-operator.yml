@@ -5,9 +5,6 @@ parameters:
     olm:
       dependencies:
         - type: https
-          source: ${airlock_microgateway_operator:gateway_api:source}
-          output_path: ${_base_directory}/manifests/gateway-api/standard-install.yaml
-        - type: https
           source: https://github.com/kubernetes-sigs/gateway-api/releases/download/${airlock_microgateway_operator:airlock_xopenshift:version}/${airlock_microgateway_operator:airlock_xopenshift:channel}-install.yaml
           output_path: ${_base_directory}/manifests/airlock-xopenshift/upstream.yaml
       compile:
@@ -27,7 +24,6 @@ parameters:
           output_path: airlock-microgateway-operator/01_olm/
         - input_paths:
             - ${_base_directory}/component/main.jsonnet
-            - ${_base_directory}/component/airlock-gateway-api.jsonnet
             - ${_base_directory}/component/airlock-xopenshift.jsonnet
           input_type: jsonnet
           output_path: airlock-microgateway-operator/00_prerequisites/
@@ -42,9 +38,6 @@ parameters:
 
     helm:
       dependencies:
-        - type: https
-          source: ${airlock_microgateway_operator:gateway_api:source}
-          output_path: ${_base_directory}/manifests/gateway-api/standard-install.yaml
         - type: helm
           chart_name: ${_helm_chart_name}
           version: ${airlock_microgateway_operator:charts:${_helm_chart_name}:version}
@@ -70,7 +63,6 @@ parameters:
           helm_values: ${airlock_microgateway_operator:helm_values}
         - input_paths:
             - ${_base_directory}/component/main.jsonnet
-            - ${_base_directory}/component/airlock-gateway-api.jsonnet
           input_type: jsonnet
           output_path: airlock-microgateway-operator/00_prerequisites/
         - input_paths:

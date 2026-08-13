@@ -33,7 +33,6 @@ jobs:
       matrix:
         instance:
           - defaults
-          - disable-gateway-api
           - olm
           - resources
     defaults:
@@ -51,7 +50,6 @@ jobs:
       matrix:
         instance:
           - defaults
-          - disable-gateway-api
           - olm
           - resources
     defaults:

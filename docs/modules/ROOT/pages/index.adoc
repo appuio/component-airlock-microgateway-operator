@@ -2,4 +2,10 @@
 
 airlock-microgateway is a Commodore component to manage airlock-microgateway.
 
+[NOTE]
+====
+This component requires https://github.com/projectsyn/component-gateway-api[component-gateway-api] to be present in the cluster's `applications`.
+That component installs the upstream Gateway API CRDs and provides the component library which this component uses to generate Gateway API resources such as `GatewayClass` and `Gateway`.
+====
+
 See the xref:references/parameters.adoc[parameters] reference for further details.
