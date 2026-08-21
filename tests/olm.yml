@@ -1,24 +1,8 @@
 # Overwrite parameters here
 applications:
   - openshift-upgrade-controller
-  - gateway-api
 
 parameters:
-  kapitan:
-    dependencies:
-      - type: https
-        source: https://raw.githubusercontent.com/appuio/component-openshift4-operators/master/lib/openshift4-operators.libsonnet
-        output_path: vendor/lib/openshift4-operators.libsonnet
-      - type: https
-        source: https://raw.githubusercontent.com/appuio/component-openshift4-monitoring/v7.4.1/lib/openshift4-monitoring-prom.libsonnet
-        output_path: vendor/lib/prom.libsonnet
-      - type: https
-        source: https://raw.githubusercontent.com/appuio/component-openshift4-monitoring/v7.4.1/lib/openshift4-monitoring-alert-patching.libsonnet
-        output_path: vendor/lib/alert-patching.libsonnet
-      - type: https
-        source: https://raw.githubusercontent.com/projectsyn/component-gateway-api/master/lib/gateway-api.libsonnet
-        output_path: vendor/lib/gateway-api.libsonnet
-
   facts:
     distribution: openshift4
   dynamic_facts:
@@ -88,8 +72,3 @@ parameters:
                 xff:
                   numTrustedHops: 1
       nulling: null
-
-  openshift4_operators:
-    defaultInstallPlanApproval: Automatic
-    defaultSource: openshift-operators-redhat
-    defaultSourceNamespace: openshift-operators-redhat

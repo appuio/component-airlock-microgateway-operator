@@ -77,3 +77,17 @@ parameters:
 
   kapitan:
     ${_kapitan:${airlock_microgateway_operator:install_method}}
+
+  commodore:
+    dependencies:
+      gateway-api:
+        url: https://github.com/projectsyn/component-gateway-api.git
+      espejote:
+        url: https://github.com/projectsyn/component-espejote.git
+      openshift4-monitoring:
+        url: https://github.com/appuio/component-openshift4-monitoring.git
+        minversion: v7.4.1
+        requiredif: "facts.distribution == 'openshift4' || facts.distribution == 'oke'"
+      openshift4-operators:
+        url: https://github.com/appuio/component-openshift4-operators.git
+        requiredif: "config.install_method == 'olm' && (facts.distribution == 'openshift4' || facts.distribution == 'oke')"

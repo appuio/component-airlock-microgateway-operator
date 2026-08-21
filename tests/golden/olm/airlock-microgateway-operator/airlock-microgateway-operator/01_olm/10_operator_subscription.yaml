@@ -31,4 +31,4 @@ spec:
   installPlanApproval: Manual
   name: airlock-microgateway
   source: certified-operators
-  sourceNamespace: openshift-operators-redhat
+  sourceNamespace: openshift-marketplace

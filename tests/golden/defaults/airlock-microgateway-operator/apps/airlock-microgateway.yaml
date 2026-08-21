@@ -1,4 +1,25 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+  name: airlock-microgateway-operator
+  namespace: syn
 spec:
+  destination:
+    namespace: syn-airlock-microgateway
+    server: https://kubernetes.default.svc
+  project: syn
+  source:
+    path: manifests/airlock-microgateway-operator
+    plugin:
+      name: kapitan
+    repoURL: ssh://git@git.example.com/org/repo.git
+    targetRevision: HEAD
   syncPolicy:
+    automated:
+      enabled: true
+      prune: true
+      selfHeal: true
     syncOptions:
       - ServerSideApply=true
