@@ -2,6 +2,7 @@ apiVersion: monitoring.coreos.com/v1
 kind: PrometheusRule
 metadata:
   labels:
+    monitoring.syn.tools/enabled: 'true'
     name: operator-rules
   name: operator-rules
   namespace: syn-airlock-microgateway
