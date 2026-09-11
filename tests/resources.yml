@@ -1,4 +1,5 @@
 applications:
+  - openshift4-monitoring
   - cilium
   - gateway-api
 
@@ -6,10 +7,7 @@ parameters:
   kapitan:
     dependencies:
       - type: https
-        source: https://raw.githubusercontent.com/appuio/component-openshift4-monitoring/v7.4.1/lib/openshift4-monitoring-prom.libsonnet
-        output_path: vendor/lib/prom.libsonnet
-      - type: https
-        source: https://raw.githubusercontent.com/appuio/component-openshift4-monitoring/v7.4.1/lib/openshift4-monitoring-alert-patching.libsonnet
+        source: https://raw.githubusercontent.com/appuio/component-openshift4-monitoring/master/lib/openshift4-monitoring-alert-patching.libsonnet
         output_path: vendor/lib/alert-patching.libsonnet
       - type: https
         source: https://raw.githubusercontent.com/projectsyn/component-gateway-api/master/lib/gateway-api.libsonnet

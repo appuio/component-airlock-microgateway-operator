@@ -380,8 +380,6 @@ type:: object
 
 This parameter allows users to disable or patch alerts managed by the component.
 
-NOTE: The component currently expects that an `openshift4-monitoring`-style alert patching library is available for the target cluster's distribution's monitoring stack.
-
 
 == `alerts.ignoreNames`
 
