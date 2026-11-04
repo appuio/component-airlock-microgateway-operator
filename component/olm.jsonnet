@@ -40,6 +40,10 @@ local operator_subscription = operatorlib.namespacedSubscription(
           name: 'GATEWAY_API_POD_MONITOR_CREATE',
           value: '%s' % params.olm.config.create_pod_monitor,
         },
+        {
+          name: 'LICENSE_MODE',
+          value: if std.get(params, 'license', '') != '' then 'required' else 'optional',
+        },
       ] + if params.airlock_xopenshift.enabled then [
         {
           name: 'GATEWAY_API_%s_API_GROUP' % airlock_xopenshift.enabled_crds[crd],
